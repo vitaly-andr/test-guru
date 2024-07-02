@@ -1,5 +1,17 @@
 # README
 
+# TestGuru
+
+## Список сущностей
+
+- Пользователь
+- Администратор
+- Тест
+- Вопрос
+- Ответ
+- Категория
+- Результат
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
