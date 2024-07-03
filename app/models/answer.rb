@@ -4,3 +4,4 @@ class Answer < ApplicationRecord
   validates :body, presence: true
   validates :correct, inclusion: { in: [true, false] }
 end
+# Answer model
