@@ -41,6 +41,14 @@ rescue ActiveRecord::RecordInvalid => e
   puts "Answer creation failed: #{e.message}"
 end
 
+def create_user_test(user_email, test_title, status)
+  user = User.find_by(email: user_email)
+  test = Test.find_by(title: test_title)
+  UserTest.create!(user: user, test: test, status: status)
+rescue ActiveRecord::RecordInvalid => e
+  puts "UserTest creation failed: #{e.message}"
+end
+
 create_category('Backend')
 create_category('Frontend')
 create_category('DevOps')
@@ -67,4 +75,9 @@ create_answer('A framework.', false, 'What is JavaScript?')
 create_answer('A containerization tool.', true, 'What is Docker?')
 create_answer('A programming language.', false, 'What is Docker?')
 
-puts 'Жопа'
+create_user_test('alice@example.com', 'Ruby Basics', 'completed')
+create_user_test('bob@example.com', 'JavaScript Basics', 'in_progress')
+create_user_test('charlie@example.com', 'Docker Basics', 'completed')
+
+# Пример повторного прохождения теста
+create_user_test('alice@example.com', 'Ruby Basics', 'in_progress')
