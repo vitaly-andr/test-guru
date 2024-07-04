@@ -44,7 +44,12 @@ end
 def create_user_test(user_email, test_title, status)
   user = User.find_by(email: user_email)
   test = Test.find_by(title: test_title)
-  UserTest.create!(user: user, test: test, status: status)
+  unless user && test
+    puts "User with email '#{user_email}' or Test with title '#{test_title}' not found."
+    return
+  end
+  # Using the enum method to set the status
+  UserTest.find_or_create_by!(user: user, test: test).update!(status: UserTest.statuses[status])
 rescue ActiveRecord::RecordInvalid => e
   puts "UserTest creation failed: #{e.message}"
 end

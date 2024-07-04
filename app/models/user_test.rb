@@ -13,5 +13,11 @@ class UserTest < ApplicationRecord
   belongs_to :user
   belongs_to :test
 
-  validates :status, presence: true, inclusion: { in: %w[in_progress completed] }
+  enum status: {
+    in_progress: 'in_progress',
+    completed: 'completed'
+  }
+
+  validates :status, presence: true, inclusion: { in: statuses.keys }
 end
+
