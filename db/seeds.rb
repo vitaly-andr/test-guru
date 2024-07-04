@@ -1,13 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 def create_category(title)
   Category.find_or_create_by!(title: title)
 rescue ActiveRecord::RecordInvalid => e
@@ -20,9 +10,14 @@ rescue ActiveRecord::RecordInvalid => e
   puts "User creation failed: #{e.message}"
 end
 
-def create_test(title, level, category_title)
+def create_test(title, level, category_title, author_email)
   category = Category.find_by(title: category_title)
-  Test.find_or_create_by!(title: title, level: level, category: category)
+  author = User.find_by(email: author_email)
+  unless category && author
+    puts "Category with title '#{category_title}' or Author with email '#{author_email}' not found."
+    return
+  end
+  Test.find_or_create_by!(title: title, level: level, category: category, author: author)
 rescue ActiveRecord::RecordInvalid => e
   puts "Test creation failed: #{e.message}"
 end
@@ -48,7 +43,6 @@ def create_user_test(user_email, test_title, status)
     puts "User with email '#{user_email}' or Test with title '#{test_title}' not found."
     return
   end
-  # Using the enum method to set the status
   UserTest.find_or_create_by!(user: user, test: test).update!(status: UserTest.statuses[status])
 rescue ActiveRecord::RecordInvalid => e
   puts "UserTest creation failed: #{e.message}"
@@ -62,12 +56,12 @@ create_user('Alice', 'alice@example.com')
 create_user('Bob', 'bob@example.com')
 create_user('Charlie', 'charlie@example.com')
 
-create_test('Ruby Basics', 1, 'Backend')
-create_test('Ruby Advanced', 2, 'Backend')
-create_test('JavaScript Basics', 1, 'Frontend')
-create_test('JavaScript Advanced', 2, 'Frontend')
-create_test('Docker Basics', 1, 'DevOps')
-create_test('Kubernetes Advanced', 2, 'DevOps')
+create_test('Ruby Basics', 1, 'Backend', 'alice@example.com')
+create_test('Ruby Advanced', 2, 'Backend', 'alice@example.com')
+create_test('JavaScript Basics', 1, 'Frontend', 'bob@example.com')
+create_test('JavaScript Advanced', 2, 'Frontend', 'bob@example.com')
+create_test('Docker Basics', 1, 'DevOps', 'charlie@example.com')
+create_test('Kubernetes Advanced', 2, 'DevOps', 'charlie@example.com')
 
 create_question('What is Ruby?', 'Ruby Basics')
 create_question('What is JavaScript?', 'JavaScript Basics')
