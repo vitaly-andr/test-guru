@@ -19,5 +19,7 @@ class UserTest < ApplicationRecord
   }
 
   validates :status, presence: true, inclusion: { in: statuses.keys }
+
+  scope :by_level, ->(level) { joins(:test).where(tests: { level: level }) }
 end
 
