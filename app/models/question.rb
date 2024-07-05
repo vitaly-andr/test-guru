@@ -18,7 +18,7 @@ class Question < ApplicationRecord
   private
 
   def validate_answers_count
-    errors.add(:base, 'should have at least one answer') if answers.size < 1
+#    errors.add(:base, 'should have at least one answer') if answers.size < 1
     errors.add(:base, 'should have at most four answers') if answers.size > 4
   end
 end
