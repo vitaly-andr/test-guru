@@ -19,14 +19,16 @@ class Test < ApplicationRecord
 
 
   validates :title, presence: true
+  validates :level, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :title, uniqueness: { scope: :level, message: "with this level already exists" }
   validates :author_id, presence: true
 
   scope :easy, -> { where(level: [0, 1]) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
 
-  def self.titles_by_category(category_title)
+  scope :titles_by_category, ->(category_title) {
     joins(:category).where(categories: { title: category_title }).order(title: :desc).pluck(:title)
-  end
+  }
 end
 # Test model
