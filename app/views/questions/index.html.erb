@@ -6,7 +6,7 @@
       ID: <%= question.id %>, Body: <%= question.body %>
       <%= link_to 'Edit', edit_test_question_path(@test, question) %>
       <%= form_with model: [@test, question], method: :delete, local: true do %>
-        <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' } %>
+        <%= submit_tag 'Delete' %>
       <% end %>
     </li>
   <% end %>
