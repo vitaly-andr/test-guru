@@ -17,8 +17,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
 
-  scope :tests_by_level, ->(user, level) {
-    joins(:user_tests).merge(UserTest.by_level(level)).where(user_tests: { user_id: user.id }).select('tests.*, user_tests.status')
-  }
+  def tests_by_level(level)
+    user_tests.by_level(level).select('tests.*, user_tests.status')
+  end
 end
 # User model
