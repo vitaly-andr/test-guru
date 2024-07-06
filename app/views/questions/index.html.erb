@@ -1,0 +1,15 @@
+<h1>Questions for Test: <%= @test.title %></h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      ID: <%= question.id %>, Body: <%= question.body %>
+      <%= link_to 'Edit', edit_test_question_path(@test, question) %>
+      <%= form_with model: [@test, question], method: :delete, local: true do %>
+        <%= submit_tag 'Delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Question', new_test_question_path(@test) %>
