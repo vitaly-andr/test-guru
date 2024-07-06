@@ -1,0 +1,16 @@
+<h1>Answers for Question: <%= @question.body %></h1>
+
+<ul>
+  <% @answers.each do |answer| %>
+    <li>
+      <%= link_to answer.body, answer_path(answer) %>
+      <%= link_to 'Edit', edit_answer_path(answer) %>
+      <%= form_with model: answer, method: :delete, local: true do %>
+        <%= submit_tag 'Delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Answer', new_question_answer_path(@question) %>
+<%= link_to 'Back to Questions', test_questions_path(@question.test_id) %>

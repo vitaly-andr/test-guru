@@ -4,8 +4,9 @@
   <% @questions.each do |question| %>
     <li>
       ID: <%= question.id %>, Body: <%= question.body %>
-      <%= link_to 'Edit', edit_test_question_path(@test, question) %>
-      <%= form_with model: [@test, question], method: :delete, local: true do %>
+      <%= link_to 'Edit', edit_question_path(question) %>
+      <%= link_to 'Answers', question_answers_path(question) %>
+      <%= form_with model: question, method: :delete, local: true do %>
         <%= submit_tag 'Delete' %>
       <% end %>
     </li>
@@ -13,3 +14,5 @@
 </ul>
 
 <%= link_to 'New Question', new_test_question_path(@test) %>
+<%= link_to 'Back to tests', tests_path %>
+

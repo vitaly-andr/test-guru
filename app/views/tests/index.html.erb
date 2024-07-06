@@ -1,0 +1,15 @@
+<h1>Tests</h1>
+
+<ul>
+  <% @tests.each do |test| %>
+    <li>
+      <%= link_to test.title, test_path(test) %>
+      <%= link_to 'Edit', edit_test_path(test) %>
+      <%= form_with model: test, method: :delete, local: true do %>
+        <%= submit_tag 'Delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Test', new_test_path %>

@@ -1,0 +1,15 @@
+<h1>Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user_path(user) %>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= form_with model: user, method: :delete, local: true do %>
+        <%= submit_tag 'Delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New User', new_user_path %>

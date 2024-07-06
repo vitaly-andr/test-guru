@@ -1,0 +1,15 @@
+<h1>User Tests</h1>
+
+<ul>
+  <% @user_tests.each do |user_test| %>
+    <li>
+      <%= link_to "User: #{user_test.user.name}, Test: #{user_test.test.title}, Status: #{user_test.status}", user_test_path(user_test) %>
+      <%= link_to 'Edit', edit_user_test_path(user_test) %>
+      <%= form_with model: user_test, method: :delete, local: true do %>
+        <%= submit_tag 'Delete' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New User Test', new_user_test_path %>
