@@ -6,8 +6,8 @@
       ID: <%= question.id %>, Body: <%= question.body %>
       <%= link_to 'Edit', edit_question_path(question) %>
       <%= link_to 'Answers', question_answers_path(question) %>
-      <%= form_with model: question, method: :delete, local: true do %>
-        <%= submit_tag 'Delete' %>
+      <%= form_with model: question, method: :delete do %>
+        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
       <% end %>
     </li>
   <% end %>
@@ -15,4 +15,3 @@
 
 <%= link_to 'New Question', new_test_question_path(@test) %>
 <%= link_to 'Back to tests', tests_path %>
-

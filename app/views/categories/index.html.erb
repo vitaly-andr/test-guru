@@ -5,8 +5,8 @@
     <li>
       <%= link_to category.title, category_path(category) %>
       <%= link_to 'Edit', edit_category_path(category) %>
-      <%= form_with model: category, method: :delete, local: true do %>
-        <%= submit_tag 'Delete' %>
+      <%= form_with model: category, method: :delete do %>
+        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
       <% end %>
     </li>
   <% end %>

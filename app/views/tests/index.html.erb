@@ -5,8 +5,8 @@
     <li>
       <%= link_to test.title, test_path(test) %>
       <%= link_to 'Edit', edit_test_path(test) %>
-      <%= form_with model: test, method: :delete, local: true do %>
-        <%= submit_tag 'Delete' %>
+      <%= form_with model: test, method: :delete do %>
+        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
       <% end %>
     </li>
   <% end %>
