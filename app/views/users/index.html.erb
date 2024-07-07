@@ -1,16 +1,17 @@
 <h1>Users</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user_path(user) %>
-      <%= link_to 'Edit', edit_user_path(user) %>
-      <%= form_with model: user, method: :delete, data: { turbo_confirm: 'Are you sure?' } do %>
-        <%= submit_tag 'Delete' %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @users %>
+  </tbody>
+</table>
 
 <%= link_to 'New User', new_user_path %>
 <%= link_to 'Back to tests', tests_path %>

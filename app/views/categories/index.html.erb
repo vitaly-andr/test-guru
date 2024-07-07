@@ -1,16 +1,16 @@
 <h1>Categories</h1>
 
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.title, category_path(category) %>
-      <%= link_to 'Edit', edit_category_path(category) %>
-      <%= form_with model: category, method: :delete do %>
-        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+<%= render @categories %>
+  </tbody>
+</table>
 
 <%= link_to 'New Category', new_category_path %>
 <%= link_to 'Back to tests', tests_path %>

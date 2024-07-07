@@ -1,13 +1,9 @@
 <tr>
   <td> <%= link_to test.title, test_path(test) %></td>
   <td> <%= test_level(test) %></td>
-  <td> <%= link_to 'Edit', edit_test_path(test) %>
-    <%= form_with model: test, method: :delete do %>
-      <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
-    <% end %>
-    <%= link_to 'Delete',
-                test_path(test),
-                method: :delete,
-                data: { turbo_confirm: 'Are you sure?' }%>
+  <td><%= test.questions.count %></td>
+  <td>
+    <%= link_to 'Edit', edit_test_path(test) %>
+    <%= link_to 'Delete', test_path(test), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
   </td>
 <tr>
