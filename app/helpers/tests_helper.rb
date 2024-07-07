@@ -1,14 +1,7 @@
 module TestsHelper
+
+  TEST_LEVELS = { 1 => :easy, 2 => :elementary, 3 => :hard }.freeze
   def test_level(test)
-    case test.level
-    when 1
-      'easy'
-    when 2
-      'elementary'
-    when 3
-      'hard'
-    else
-      'hero'
-    end
+    TEST_LEVELS[test.level] || :hero
   end
 end
