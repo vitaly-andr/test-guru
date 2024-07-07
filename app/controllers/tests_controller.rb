@@ -20,7 +20,7 @@ class TestsController < ApplicationController
     if @test.save
       redirect_to tests_path, notice: 'Test was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +32,7 @@ class TestsController < ApplicationController
     if @test.update(test_params)
       redirect_to tests_path, notice: 'Test was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

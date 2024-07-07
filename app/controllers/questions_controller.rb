@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to test_questions_path(@test), notice: 'Question was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
     if @question.update(question_params)
       redirect_to test_questions_path(@question.test), notice: 'Question was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
