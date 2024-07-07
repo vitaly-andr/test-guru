@@ -1,6 +1,6 @@
-<%= form_with model: (@question.new_record? ? [@question.test, @question] : @question) do |form| %>
+<%= form_with model: [@test, @question] do |form| %>
   <h1><%= form_header(@question) %> for test "<%= @question.test.title %>"</h1>
-
+  <%= render 'shared/errors', resource: @question %>
   <div class="field">
     <%= form.label :body %>
     <%= form.text_area :body %>
@@ -9,5 +9,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
-  <%= render 'shared/errors', resource: @question %>
+
 <% end %>

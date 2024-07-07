@@ -1,6 +1,6 @@
-<%= form_with model: @test, local: true do |form| %>
-  <%= render 'shared/errors', resource: @test %>
-  <h1><%= form_header(@test) %></h1>
+<%= form_with model: test, local: true do |form| %>
+  <h1><%= form_header(test) %></h1>
+  <%= render 'shared/errors', resource: test %>
 
   <div class="field">
     <%= form.label :title %>

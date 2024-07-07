@@ -1,5 +1,6 @@
-<%= form_with model: @user do |form| %>
-  <h1><%= form_header(@user) %></h1>
+<%= form_with model: user do |form| %>
+  <h1><%= form_header(user) %></h1>
+  <%= render 'shared/errors', resource: user %>
 
   <div class="field">
     <%= form.label :name %>
