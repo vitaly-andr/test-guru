@@ -26,7 +26,6 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    # @question is already loaded by find_question
   end
 
   def update
