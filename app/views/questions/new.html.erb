@@ -1,2 +1,2 @@
-<%= render 'form', test: @test, question: @question %>
-<%= link_to 'Back to Questions', test_questions_path(@test) %>
+<%= render 'form', question: @question %>
+<%= link_to 'Back to Questions', test_questions_path(@question.test) %>

@@ -1,5 +1,5 @@
-<%= form_with model: (@question.new_record? ? [@test, @question] : @question) do |form| %>
-  <h1><%= form_header(@question) %> for test "<%= @test.title %>"</h1>
+<%= form_with model: (@question.new_record? ? [@question.test, @question] : @question) do |form| %>
+  <h1><%= form_header(@question) %> for test "<%= @question.test.title %>"</h1>
 
   <div class="field">
     <%= form.label :body %>

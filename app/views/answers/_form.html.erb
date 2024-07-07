@@ -1,5 +1,5 @@
-<%= form_with model: (@answer.new_record? ? [@question, @answer] : @answer) do |form| %>
-  <h1><%= form_header(@answer) %> for question "<%= @question.body %>"</h1>
+<%= form_with model: (@answer.new_record? ? [@answer.question, @answer] : @answer) do |form| %>
+  <h1><%= form_header(@answer) %> for question "<%= @answer.question.body %>"</h1>
 
   <%= render 'shared/errors', resource: @answer %>
 
