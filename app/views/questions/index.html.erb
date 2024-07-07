@@ -1,17 +1,16 @@
 <h1>Questions for Test: <%= @test.title %></h1>
 
-<ul>
-  <% @questions.each do |question| %>
-    <li>
-      ID: <%= question.id %>, Body: <%= question.body %>
-      <%= link_to 'Edit', edit_question_path(question) %>
-      <%= link_to 'Answers', question_answers_path(question) %>
-      <%= form_with model: question, method: :delete do %>
-        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @questions %>
+  </tbody>
+</table>
 
 <%= link_to 'New Question', new_test_question_path(@test) %>
 <%= link_to 'Back to tests', tests_path %>

@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_action :find_question, only: [:index, :new, :create]
   before_action :find_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_question_from_answer, only: [:edit, :update]
 
   def index
     @answers = @question.answers
@@ -42,6 +43,9 @@ class AnswersController < ApplicationController
 
   def find_question
     @question = Question.find(params[:question_id])
+  end
+  def set_question_from_answer
+    @question = @answer.question
   end
 
   def find_answer

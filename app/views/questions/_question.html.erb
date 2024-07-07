@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to question.body, question_answers_path(question) %></td>
+  <td><%= link_to 'Edit', edit_question_path(question) %>
+  <%= form_with model: question, method: :delete do %>
+    <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
+  <% end %>
+  </td>
+<tr>

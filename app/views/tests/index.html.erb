@@ -1,15 +1,16 @@
 <h1>Tests</h1>
 
-<ul>
-  <% @tests.each do |test| %>
-    <li>
-      <%= link_to test.title, test_path(test) %>
-      <%= link_to 'Edit', edit_test_path(test) %>
-      <%= form_with model: test, method: :delete do %>
-        <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @tests %>
+  </tbody>
+</table>
 
 <%= link_to 'New Test', new_test_path %>

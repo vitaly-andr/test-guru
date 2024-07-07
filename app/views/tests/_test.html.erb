@@ -1,0 +1,9 @@
+<tr>
+  <td> <%= link_to test.title, test_path(test) %></td>
+  <td> Level - <%= test.level %></td>
+  <td> <%= link_to 'Edit', edit_test_path(test) %>
+    <%= form_with model: test, method: :delete do %>
+      <%= submit_tag 'Delete', data: { turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </td>
+<tr>
