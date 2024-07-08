@@ -1,0 +1,28 @@
+<%= form_with model: test, local: true do |form| %>
+  <h1><%= form_header(test) %></h1>
+  <%= render 'shared/errors', resource: test %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :level %>
+    <%= form.number_field :level %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.collection_select :category_id, Category.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author_id, 'Author' %>
+    <%= form.collection_select :author_id, User.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

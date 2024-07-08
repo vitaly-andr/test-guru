@@ -1,0 +1,18 @@
+<%= form_with model: user do |form| %>
+  <h1><%= form_header(user) %></h1>
+  <%= render 'shared/errors', resource: user %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

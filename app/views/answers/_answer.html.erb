@@ -1,0 +1,6 @@
+<tr>
+  <td> <%= link_to answer.body, answer_path(answer) %></td>
+  <td> <%= link_to 'Edit', edit_answer_path(answer) %>
+    <%= link_to 'Delete', answer_path(answer), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </td>
+<tr>

@@ -1,0 +1,12 @@
+<%= form_with model: category do |form| %>
+  <h1><%= form_header(category) %></h1>
+  <%= render 'shared/errors', resource: category %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
