@@ -30,6 +30,10 @@ class TestPassage < ApplicationRecord
     save!
   end
 
+  def success_percentage
+    (correct_questions.to_f / test.questions.count) * 100
+  end
+
   private
 
   def before_validation_set_first_question
