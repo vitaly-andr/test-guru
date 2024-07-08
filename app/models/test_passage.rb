@@ -29,6 +29,13 @@ class TestPassage < ApplicationRecord
     # self.current_question = next_question
     save!
   end
+  def current_question_number
+    test.questions.order(:id).where('id <= ?', current_question.id).count
+  end
+
+  def total_questions
+    test.questions.count
+  end
 
   def success_percentage
     (correct_questions.to_f / test.questions.count) * 100
