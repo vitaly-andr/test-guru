@@ -16,6 +16,7 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
   before_save :set_question
 
+  SUCCESS_CRITERIA = 85
   def completed?
     current_question.nil?
   end
@@ -40,7 +41,7 @@ class TestPassage < ApplicationRecord
   end
 
   def success?
-    success_percentage >= 85
+    success_percentage >= SUCCESS_CRITERIA
   end
 
   private
