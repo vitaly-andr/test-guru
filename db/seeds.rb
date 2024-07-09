@@ -36,18 +36,6 @@ rescue ActiveRecord::RecordInvalid => e
   puts "Answer creation failed: #{e.message}"
 end
 
-def create_user_test(user_email, test_title, status)
-  user = User.find_by(email: user_email)
-  test = Test.find_by(title: test_title)
-  unless user && test
-    puts "User with email '#{user_email}' or Test with title '#{test_title}' not found."
-    return
-  end
-  UserTest.find_or_create_by!(user: user, test: test).update!(status: UserTest.statuses[status])
-rescue ActiveRecord::RecordInvalid => e
-  puts "UserTest creation failed: #{e.message}"
-end
-
 create_category('Backend')
 create_category('Frontend')
 create_category('DevOps')
@@ -63,20 +51,116 @@ create_test('JavaScript Advanced', 2, 'Frontend', 'bob@example.com')
 create_test('Docker Basics', 1, 'DevOps', 'charlie@example.com')
 create_test('Kubernetes Advanced', 2, 'DevOps', 'charlie@example.com')
 
+# Вопросы и ответы для Ruby Basics
 create_question('What is Ruby?', 'Ruby Basics')
-create_question('What is JavaScript?', 'JavaScript Basics')
-create_question('What is Docker?', 'Docker Basics')
-
 create_answer('A programming language.', true, 'What is Ruby?')
-create_answer('A framework.', false, 'What is Ruby?')
+create_answer('A type of gemstone.', false, 'What is Ruby?')
+create_answer('A framework for building web applications.', false, 'What is Ruby?')
+create_answer('A database management system.', false, 'What is Ruby?')
+
+create_question('Who developed Ruby?', 'Ruby Basics')
+create_answer('Yukihiro Matsumoto', true, 'Who developed Ruby?')
+create_answer('Guido van Rossum', false, 'Who developed Ruby?')
+create_answer('Dennis Ritchie', false, 'Who developed Ruby?')
+create_answer('James Gosling', false, 'Who developed Ruby?')
+
+create_question('Which of the following is a Ruby web framework?', 'Ruby Basics')
+create_answer('Ruby on Rails', true, 'Which of the following is a Ruby web framework?')
+create_answer('Django', false, 'Which of the following is a Ruby web framework?')
+create_answer('Spring', false, 'Which of the following is a Ruby web framework?')
+create_answer('Laravel', false, 'Which of the following is a Ruby web framework?')
+
+# Вопросы и ответы для Ruby Advanced
+create_question('What is a Ruby gem?', 'Ruby Advanced')
+create_answer('A package of Ruby code that can be distributed and installed.', true, 'What is a Ruby gem?')
+create_answer('A type of gemstone.', false, 'What is a Ruby gem?')
+create_answer('A configuration file for Ruby.', false, 'What is a Ruby gem?')
+create_answer('A web server for Ruby applications.', false, 'What is a Ruby gem?')
+
+create_question('What does the `attr_accessor` method do?', 'Ruby Advanced')
+create_answer('Creates getter and setter methods for instance variables.', true, 'What does the `attr_accessor` method do?')
+create_answer('Creates only getter methods for instance variables.', false, 'What does the `attr_accessor` method do?')
+create_answer('Creates only setter methods for instance variables.', false, 'What does the `attr_accessor` method do?')
+create_answer('Creates a constant variable.', false, 'What does the `attr_accessor` method do?')
+
+create_question('What is the purpose of the `super` keyword in Ruby?', 'Ruby Advanced')
+create_answer('Calls the same method from the superclass.', true, 'What is the purpose of the `super` keyword in Ruby?')
+create_answer('Creates a superclass.', false, 'What is the purpose of the `super` keyword in Ruby?')
+create_answer('Initializes an instance variable.', false, 'What is the purpose of the `super` keyword in Ruby?')
+create_answer('Defines a class method.', false, 'What is the purpose of the `super` keyword in Ruby?')
+
+# Вопросы и ответы для JavaScript Basics
+create_question('What is JavaScript?', 'JavaScript Basics')
 create_answer('A programming language.', true, 'What is JavaScript?')
-create_answer('A framework.', false, 'What is JavaScript?')
-create_answer('A containerization tool.', true, 'What is Docker?')
+create_answer('A type of coffee.', false, 'What is JavaScript?')
+create_answer('A web server.', false, 'What is JavaScript?')
+create_answer('A database management system.', false, 'What is JavaScript?')
+
+create_question('Who developed JavaScript?', 'JavaScript Basics')
+create_answer('Brendan Eich', true, 'Who developed JavaScript?')
+create_answer('Tim Berners-Lee', false, 'Who developed JavaScript?')
+create_answer('Mark Zuckerberg', false, 'Who developed JavaScript?')
+create_answer('Larry Page', false, 'Who developed JavaScript?')
+
+create_question('Which company first implemented JavaScript?', 'JavaScript Basics')
+create_answer('Netscape', true, 'Which company first implemented JavaScript?')
+create_answer('Microsoft', false, 'Which company first implemented JavaScript?')
+create_answer('Google', false, 'Which company first implemented JavaScript?')
+create_answer('Apple', false, 'Which company first implemented JavaScript?')
+
+# Вопросы и ответы для JavaScript Advanced
+create_question('What is a closure in JavaScript?', 'JavaScript Advanced')
+create_answer('A function that has access to its own scope, the scope of the outer function, and the global scope.', true, 'What is a closure in JavaScript?')
+create_answer('A method to close the browser window.', false, 'What is a closure in JavaScript?')
+create_answer('An object that closes over its properties.', false, 'What is a closure in JavaScript?')
+create_answer('A design pattern in JavaScript.', false, 'What is a closure in JavaScript?')
+
+create_question('What does the `this` keyword refer to in JavaScript?', 'JavaScript Advanced')
+create_answer('The object that is executing the current function.', true, 'What does the `this` keyword refer to in JavaScript?')
+create_answer('The global object.', false, 'What does the `this` keyword refer to in JavaScript?')
+create_answer('The current function.', false, 'What does the `this` keyword refer to in JavaScript?')
+create_answer('A reference to the previous function.', false, 'What does the `this` keyword refer to in JavaScript?')
+
+create_question('What is the purpose of the `let` keyword in JavaScript?', 'JavaScript Advanced')
+create_answer('Declares a block-scoped local variable.', true, 'What is the purpose of the `let` keyword in JavaScript?')
+create_answer('Declares a global variable.', false, 'What is the purpose of the `let` keyword in JavaScript?')
+create_answer('Defines a constant variable.', false, 'What is the purpose of the `let` keyword in JavaScript?')
+create_answer('Creates a new object.', false, 'What is the purpose of the `let` keyword in JavaScript?')
+
+# Вопросы и ответы для Docker Basics
+create_question('What is Docker?', 'Docker Basics')
+create_answer('A platform for developing, shipping, and running applications in containers.', true, 'What is Docker?')
 create_answer('A programming language.', false, 'What is Docker?')
+create_answer('A web framework.', false, 'What is Docker?')
+create_answer('A database management system.', false, 'What is Docker?')
 
-create_user_test('alice@example.com', 'Ruby Basics', 'completed')
-create_user_test('bob@example.com', 'JavaScript Basics', 'in_progress')
-create_user_test('charlie@example.com', 'Docker Basics', 'completed')
+create_question('What is a Docker container?', 'Docker Basics')
+create_answer('A lightweight, standalone, and executable package of software.', true, 'What is a Docker container?')
+create_answer('A virtual machine.', false, 'What is a Docker container?')
+create_answer('A type of database.', false, 'What is a Docker container?')
+create_answer('A networking protocol.', false, 'What is a Docker container?')
 
-# Пример повторного прохождения теста
-create_user_test('alice@example.com', 'Ruby Basics', 'in_progress')
+create_question('Which of the following is a command to build a Docker image?', 'Docker Basics')
+create_answer('docker build', true, 'Which of the following is a command to build a Docker image?')
+create_answer('docker run', false, 'Which of the following is a command to build a Docker image?')
+create_answer('docker start', false, 'Which of the following is a command to build a Docker image?')
+create_answer('docker stop', false, 'Which of the following is a command to build a Docker image?')
+
+# Вопросы и ответы для Kubernetes Advanced
+create_question('What is Kubernetes?', 'Kubernetes Advanced')
+create_answer('An open-source platform for automating deployment, scaling, and operations of application containers.', true, 'What is Kubernetes?')
+create_answer('A programming language.', false, 'What is Kubernetes?')
+create_answer('A web framework.', false, 'What is Kubernetes?')
+create_answer('A type of database.', false, 'What is Kubernetes?')
+
+create_question('What is a Kubernetes pod?', 'Kubernetes Advanced')
+create_answer('The smallest deployable unit in Kubernetes, which can contain one or more containers.', true, 'What is a Kubernetes pod?')
+create_answer('A virtual machine.', false, 'What is a Kubernetes pod?')
+create_answer('A networking protocol.', false, 'What is a Kubernetes pod?')
+create_answer('A type of database.', false, 'What is a Kubernetes pod?')
+
+create_question('Which command is used to create a new pod in Kubernetes?', 'Kubernetes Advanced')
+create_answer('kubectl create pod', true, 'Which command is used to create a new pod in Kubernetes?')
+create_answer('kubectl run', false, 'Which command is used to create a new pod in Kubernetes?')
+create_answer('kubectl start', false, 'Which command is used to create a new pod in Kubernetes?')
+create_answer('kubectl deploy', false, 'Which command is used to create a new pod in Kubernetes?')
