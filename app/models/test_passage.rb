@@ -26,7 +26,6 @@ class TestPassage < ApplicationRecord
       self.correct_questions += 1
     end
 
-    # self.current_question = next_question
     save!
   end
   def current_question_number
@@ -39,6 +38,10 @@ class TestPassage < ApplicationRecord
 
   def success_percentage
     (correct_questions.to_f / test.questions.count) * 100
+  end
+
+  def success?
+    success_percentage >= 85
   end
 
   private
