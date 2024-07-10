@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+
   helper_method :current_user,
                 :logged_in?
 
@@ -6,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
+      store_location
       redirect_to login_path, alert: 'Are you a Guru? Verify your Email and Password please'
     end
   end
@@ -16,5 +19,8 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     current_user.present?
+  end
+  def store_location
+    cookies[:return_to] = request.fullpath if request.get?
   end
 end

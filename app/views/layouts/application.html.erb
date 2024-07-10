@@ -16,7 +16,7 @@
     <%= link_to 'TestGuru', root_path %>
     <% if logged_in? %>
       <p class="nav user">Welcome, <b><%= current_user.email %></b> Guru</p>
-      <%= link_to 'Logout', logout_path, method: :delete %>
+      <%= link_to 'Logout', logout_path, data: { turbo_method: :delete } %>
     <% else %>
       <%= link_to 'Register', signup_path %>
       <%= link_to 'Login', login_path %>
