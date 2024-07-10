@@ -4,8 +4,11 @@ rescue ActiveRecord::RecordInvalid => e
   puts "Category creation failed: #{e.message}"
 end
 
-def create_user(name, email)
-  User.find_or_create_by!(name: name, email: email)
+def create_user(name, email, password)
+  User.find_or_create_by!(name: name, email: email) do |user|
+    user.password = password
+    user.password_confirmation = password
+  end
 rescue ActiveRecord::RecordInvalid => e
   puts "User creation failed: #{e.message}"
 end
@@ -40,9 +43,9 @@ create_category('Backend')
 create_category('Frontend')
 create_category('DevOps')
 
-create_user('Alice', 'alice@example.com')
-create_user('Bob', 'bob@example.com')
-create_user('Charlie', 'charlie@example.com')
+create_user('Alice', 'alice@example.com', 'password1')
+create_user('Bob', 'bob@example.com', 'password2')
+create_user('Charlie', 'charlie@example.com', 'password3')
 
 create_test('Ruby Basics', 1, 'Backend', 'alice@example.com')
 create_test('Ruby Advanced', 2, 'Backend', 'alice@example.com')
