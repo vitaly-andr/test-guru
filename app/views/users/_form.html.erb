@@ -1,18 +1,31 @@
-<%= form_with model: user do |form| %>
+<%= form_with model: user, local: true do |form| %>
   <h1><%= form_header(user) %></h1>
   <%= render 'shared/errors', resource: user %>
 
-  <div class="field">
-    <%= form.label :name %>
+  <p class="field">
+    <%= form.label :name %><br>
     <%= form.text_field :name %>
-  </div>
+  </p>
 
-  <div class="field">
-    <%= form.label :email %>
+  <p class="field">
+    <%= form.label :email %><br>
     <%= form.text_field :email %>
-  </div>
+  </p>
+  <p class="field">
+    <%= form.label :password %><br>
 
-  <div class="actions">
+    <%= form.password_field :password, id: :user_password %>
+  </p>
+
+
+  <p class="field">
+    <%= form.label :password_confirmation %><br>
+
+    <%= form.password_field :password_confirmation, id: :user_password_confirmation %>
+  </p>
+
+  <p class="actions">
     <%= form.submit %>
-  </div>
+  </p>
+
 <% end %>

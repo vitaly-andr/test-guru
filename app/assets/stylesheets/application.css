@@ -51,3 +51,7 @@ th {
     border: 1px solid #ebccd1;
 }
 
+.nav.user{
+    text-align: right;
+}
+

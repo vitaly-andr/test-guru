@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,9 +16,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path, notice: 'User was successfully created.'
+      session[:user_id] = @user.id
+      redirect_to tests_path, notice: 'User was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -44,6 +46,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
