@@ -2,6 +2,7 @@
 #
 
 Rails.application.routes.draw do
+  get 'sessions/new'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -31,4 +32,8 @@ Rails.application.routes.draw do
       get :result
     end
   end
+
+  get :login, to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
+  resources :sessions, only: :create
 end

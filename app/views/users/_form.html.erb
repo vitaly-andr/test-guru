@@ -3,29 +3,29 @@
   <%= render 'shared/errors', resource: user %>
 
   <p class="field">
-    <%= form.label :name %>
+    <%= form.label :name %><br>
     <%= form.text_field :name %>
   </p>
 
   <p class="field">
-    <%= form.label :email %>
+    <%= form.label :email %><br>
     <%= form.text_field :email %>
   </p>
   <p class="field">
-    <%= form.label :password %>
+    <%= form.label :password %><br>
 
     <%= form.password_field :password, id: :user_password %>
   </p>
 
 
   <p class="field">
-    <%= form.label :password_confirmation %>
+    <%= form.label :password_confirmation %><br>
 
     <%= form.password_field :password_confirmation, id: :user_password_confirmation %>
   </p>
 
-  <div class="actions">
+  <p class="actions">
     <%= form.submit %>
-  </div>
+  </p>
 
 <% end %>

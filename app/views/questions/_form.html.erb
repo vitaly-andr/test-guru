@@ -1,13 +1,12 @@
 <%= form_with model: [@test, @question] do |form| %>
   <h1><%= form_header(@question) %> for test "<%= @question.test.title %>"</h1>
   <%= render 'shared/errors', resource: @question %>
-  <div class="field">
-    <%= form.label :body %>
+  <p class="field">
     <%= form.text_area :body %>
-  </div>
+  </p>
 
-  <div class="actions">
+  <p class="actions">
     <%= form.submit %>
-  </div>
+  </p>
 
 <% end %>
