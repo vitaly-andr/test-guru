@@ -44,7 +44,8 @@ create_category('Frontend')
 create_category('DevOps')
 
 User.create!(
-  name: 'Alice',
+  first_name: 'Alice',
+  last_name: 'Johnson',
   email: 'alice@example.com',
   password: 'password1',
   password_confirmation: 'password1',
@@ -54,7 +55,8 @@ User.create!(
 )
 
 User.create!(
-  name: 'Bob',
+  first_name: 'Bob',
+  last_name: 'Smith',
   email: 'bob@example.com',
   password: 'password2',
   password_confirmation: 'password2',
@@ -63,13 +65,15 @@ User.create!(
 )
 
 User.create!(
-  name: 'Charlie',
+  first_name: 'Charlie',
+  last_name: 'Brown',
   email: 'charlie@example.com',
   password: 'password3',
   password_confirmation: 'password3',
   confirmed_at: Time.now,
   confirmation_sent_at: Time.now
 )
+
 
 create_test('Ruby Basics', 1, 'Backend', 'alice@example.com')
 create_test('Ruby Advanced', 2, 'Backend', 'alice@example.com')

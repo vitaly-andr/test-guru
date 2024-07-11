@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  name                   :string           not null
+#  first_name             :string           not null
 #  email                  :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -16,6 +16,7 @@
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string
 #  admin                  :boolean
+#  last_name              :string
 #
 
 
@@ -38,6 +39,10 @@ class User < ApplicationRecord
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
 # User model

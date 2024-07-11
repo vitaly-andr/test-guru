@@ -16,9 +16,14 @@
     <%= link_to 'TestGuru', root_path %>
     <% if user_signed_in? %>
       <p class="nav user">
-        Welcome, <b><%= current_user.email %></b> Guru
+        Welcome, <b><%= current_user.full_name %></b> Guru
         <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete } %>
       </p>
+      <% if current_user.admin? %>
+        <%= link_to 'Admin Tests', admin_tests_path %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Login', new_user_session_path %>
     <% end %>
   </nav>
 </header>
