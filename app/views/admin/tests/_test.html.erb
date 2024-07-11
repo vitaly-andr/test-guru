@@ -1,0 +1,9 @@
+<tr>
+  <td> <%= link_to test.title, admin_test_path(test) %></td>
+  <td> <%= test_level(test) %></td>
+  <td><%= test.questions.count %></td>
+  <td class="actions">
+    <%= link_to 'Edit', edit_admin_test_path(test) %>
+    <%= link_to 'Delete', admin_test_path(test), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </td>
+</tr>

@@ -1,0 +1,37 @@
+<h1>Edit Question and Answers</h1>
+
+<%= form_with model: [@question.test, @question], local: true do |form| %>
+  <h2>Question</h2>
+  <%= render 'shared/errors', resource: @question %>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update Question' %>
+  </div>
+<% end %>
+
+<h2>Answers</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Body</th>
+    <th>Correct</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @question.answers %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to 'New Answer', new_admin_question_answer_path(@question) %>
+</p>
+
+<p>
+  <%= link_to 'Back to Questions', admin_test_questions_path(@question.test) %>
+</p>
