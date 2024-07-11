@@ -1,8 +1,0 @@
-<tr>
-  <td><%= link_to user.name, user_path(user) %>  </td>
-  <td><%= user.email %> </td>
-  <td>
-    <%= link_to 'Edit', edit_user_path(user) %>
-    <%= link_to 'Delete', user_path(user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-  </td>
-<tr>
