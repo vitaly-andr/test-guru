@@ -1,4 +1,4 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminController
   before_action :find_category, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to categories_path, notice: 'Category was successfully created.'
+      redirect_to admin_categories_path, notice: 'Category was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to categories_path, notice: 'Category was successfully updated.'
+      redirect_to admin_categories_path, notice: 'Category was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path, notice: 'Category was successfully deleted.'
+    redirect_to admin_categories_path, notice: 'Category was successfully deleted.'
   end
 
   private

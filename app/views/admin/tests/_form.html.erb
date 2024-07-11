@@ -19,8 +19,9 @@
 
   <div class="field">
     <%= form.label :author_id, 'Author' %>
-    <%= form.collection_select :author_id, User.all, :id, :name %>
+    <%= form.collection_select :author_id, User.all, :id, :full_name %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

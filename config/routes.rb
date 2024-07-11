@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :categories
   end
 
-  resources :tests, only: [:index,  :show] do
+  resources :tests, only: [:index] do
     member do
       post :start
     end
