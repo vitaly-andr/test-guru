@@ -1,6 +1,4 @@
-class Admin::QuestionsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :admin_only
+class Admin::QuestionsController < Admin::AdminController
   before_action :find_test, only: [:index,:new, :create]
   before_action :find_question, only: [:show,:edit, :update, :destroy]
 

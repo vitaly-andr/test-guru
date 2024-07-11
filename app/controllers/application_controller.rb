@@ -10,12 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def admin_only
-    unless current_user.admin?
-      flash[:alert] = "Access denied."
-      redirect_to root_path
-    end
-  end
 
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
