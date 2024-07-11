@@ -43,9 +43,33 @@ create_category('Backend')
 create_category('Frontend')
 create_category('DevOps')
 
-create_user('Alice', 'alice@example.com', 'password1')
-create_user('Bob', 'bob@example.com', 'password2')
-create_user('Charlie', 'charlie@example.com', 'password3')
+User.create!(
+  name: 'Alice',
+  email: 'alice@example.com',
+  password: 'password1',
+  password_confirmation: 'password1',
+  admin: true,
+  confirmed_at: Time.now,
+  confirmation_sent_at: Time.now
+)
+
+User.create!(
+  name: 'Bob',
+  email: 'bob@example.com',
+  password: 'password2',
+  password_confirmation: 'password2',
+  confirmed_at: Time.now,
+  confirmation_sent_at: Time.now
+)
+
+User.create!(
+  name: 'Charlie',
+  email: 'charlie@example.com',
+  password: 'password3',
+  password_confirmation: 'password3',
+  confirmed_at: Time.now,
+  confirmation_sent_at: Time.now
+)
 
 create_test('Ruby Basics', 1, 'Backend', 'alice@example.com')
 create_test('Ruby Advanced', 2, 'Backend', 'alice@example.com')

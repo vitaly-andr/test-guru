@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
+  get 'admin/tests', to: 'tests#index', as: 'admin_tests'
+
+
   resources :tests do
     resources :questions, shallow: true do
       resources :answers, shallow: true

@@ -3,6 +3,8 @@ class TestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_test, only: %i[show edit update destroy start]
   before_action :set_user, only: :start
+  before_action :admin_only, only: [:new, :create, :edit, :update, :destroy]
+
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
@@ -19,7 +21,7 @@ class TestsController < ApplicationController
   end
 
   def create
-    @test = Test.new(test_params)
+    @test = current_user.authored_tests.new(test_params) # Создаем тест через ассоциацию
     if @test.save
       redirect_to tests_path, notice: 'Test was successfully created.'
     else

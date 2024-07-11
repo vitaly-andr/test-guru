@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   before_action :find_question, only: [:index, :new, :create]
   before_action :find_answer, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @answers = @question.answers
   end

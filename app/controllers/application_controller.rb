@@ -10,6 +10,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def admin_only
+    unless current_user.admin?
+      flash[:alert] = "Access denied."
+      redirect_to root_path
+    end
+  end
 
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
@@ -20,6 +26,12 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.fullpath)
   end
   def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || super
+    if resource.admin?
+      flash[:notice] = "Привет, #{current_user.name}! Не забудь, что ты Админ"
+      admin_tests_path
+    else
+      flash[:notice] = "Привет, #{current_user.name}!"
+      stored_location_for(resource_or_scope) || super
+    end
   end
 end
