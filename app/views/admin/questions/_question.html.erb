@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to question.body, admin_question_answers_path(question) %></td>
   <td class="actions">
-    <%= link_to 'Edit', edit_admin_question_path(question) %>
-    <%= link_to 'Delete', admin_question_path(question), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <%= link_to t('shared.actions.edit'), edit_admin_question_path(question) %>
+    <%= link_to t('shared.actions.delete'), admin_question_path(question), data: { turbo_method: :delete, turbo_confirm: t('shared.actions.confirm_delete') } %>
   </td>
 </tr>

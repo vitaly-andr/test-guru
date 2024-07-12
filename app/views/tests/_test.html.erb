@@ -3,6 +3,6 @@
   <td> <%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
   <td class="actions">
-    <%= button_to 'Start', start_test_path(test), data: { turbo_method: :post } %>
+    <%= button_to t('tests.index.start'), start_test_path(test), data: { turbo_method: :post } %>
   </td>
 <tr>

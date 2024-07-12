@@ -1,6 +1,6 @@
 class Admin::QuestionsController < Admin::AdminController
-  before_action :find_test, only: [:index,:new, :create]
-  before_action :find_question, only: [:show,:edit, :update, :destroy]
+  before_action :find_test, only: [:index, :new, :create]
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
 
   def index
     @questions = @test.questions
@@ -9,6 +9,7 @@ class Admin::QuestionsController < Admin::AdminController
   def show
     redirect_to admin_question_answers_path(@question)
   end
+
   def new
     @question = @test.questions.new
   end
@@ -16,7 +17,7 @@ class Admin::QuestionsController < Admin::AdminController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to admin_test_path(@test), notice: 'Question was successfully created.'
+      redirect_to admin_test_path(@test), notice: t('helpers.submit.question.create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +28,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def update
     if @question.update(question_params)
-      redirect_to admin_test_path(@question.test), notice: 'Question was successfully updated.'
+      redirect_to admin_test_path(@question.test), notice: t('helpers.submit.question.update')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +36,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def destroy
     @question.destroy
-    redirect_to admin_test_path(@question.test), notice: 'Question was successfully destroyed.'
+    redirect_to admin_test_path(@question.test), notice: t('helpers.submit.question.destroy')
   end
 
   private
@@ -51,5 +52,4 @@ class Admin::QuestionsController < Admin::AdminController
   def question_params
     params.require(:question).permit(:body)
   end
-
 end

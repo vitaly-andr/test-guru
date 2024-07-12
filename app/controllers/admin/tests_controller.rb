@@ -18,7 +18,7 @@ class Admin::TestsController < Admin::AdminController
   def create
     @test = current_user.authored_tests.new(test_params)
     if @test.save
-      redirect_to admin_tests_path, notice: 'Test was successfully created.'
+      redirect_to admin_tests_path, notice: t('helpers.submit.test.create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class Admin::TestsController < Admin::AdminController
 
   def update
     if @test.update(test_params)
-      redirect_to admin_tests_path, notice: 'Test was successfully updated.'
+      redirect_to admin_tests_path, notice: t('helpers.submit.test.update')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class Admin::TestsController < Admin::AdminController
 
   def destroy
     @test.destroy
-    redirect_to admin_tests_path, notice: 'Test was successfully deleted.'
+    redirect_to admin_tests_path, notice: t('helpers.submit.test.destroy')
   end
 
   private
@@ -51,9 +51,6 @@ class Admin::TestsController < Admin::AdminController
   end
 
   def rescue_with_test_not_found
-    render plain: 'Test was not found', status: 404
+    render plain: t('errors.messages.test_not_found'), status: 404
   end
-
-
 end
-

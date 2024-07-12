@@ -3,8 +3,8 @@
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Actions</th>
+    <th><%= t('admin.categories.index.title') %></th>
+    <th><%= t('admin.categories.index.actions') %></th>
   </tr>
   </thead>
   <tbody>
@@ -12,5 +12,5 @@
   </tbody>
 </table>
 
-<%= link_to 'New Category', new_admin_category_path %>
-<%= link_to 'Back to tests', admin_tests_path %>
+<%= link_to t('admin.categories.index.new_category'), new_admin_category_path %>
+<%= link_to t('admin.categories.index.back_to_tests'), admin_tests_path %>

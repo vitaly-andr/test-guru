@@ -1,7 +1,9 @@
-<h1>Passing the <%= @test_passage.test.title %> Test</h1>
+<h1><%= t('test_passages.show.header', title: @test_passage.test.title) %></h1>
 
 <p>
-  Question <%= @test_passage.current_question_number %> of <%= @test_passage.total_questions %>
+  <%= t('test_passages.show.question_progress',
+        current_question_number: @test_passage.current_question_number,
+        total_questions: @test_passage.total_questions) %>
 </p>
 
 <b>
@@ -15,6 +17,6 @@
       <%= b.label %>
     </p>
   <% end %>
-
-  <p><%= form.submit 'Next' %></p>
+<!--Не разобрался почему автоматом submit не заменяет-->
+  <p><%= form.submit t('helpers.submit.test_passage.update')%></p>
 <% end %>

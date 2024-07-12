@@ -1,0 +1,41 @@
+ru:
+  activerecord:
+    models:
+      user: "Пользователь"
+      test: "Тест"
+      question: "Вопрос"
+      answer: "Ответ"
+      category: "Категория"
+      test_passage: "Прохождение теста"
+    attributes:
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        email: "Электронная почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        current_password: "Текущий пароль"
+      test:
+        title: "Название"
+        level: "Уровень"
+        category: "Категория"
+        author: "Автор"
+      question:
+        body: "Текст вопроса"
+        test: "Тест"
+      answer:
+        body: "Текст ответа"
+        correct: "Правильный"
+        question: "Вопрос"
+      category:
+        title: "Название"
+      test_passage:
+        user: "Пользователь"
+        test: "Тест"
+        current_question: "Текущий вопрос"
+        correct_questions: "Правильных ответов"
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        invalid: "неверный"
+        not_an_integer: "должно быть целым числом"

@@ -1,0 +1,41 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+      test: "Test"
+      question: "Question"
+      answer: "Answer"
+      category: "Category"
+      test_passage: "Test Passage"
+    attributes:
+      user:
+        first_name: "First Name"
+        last_name: "Last Name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password Confirmation"
+        current_password: "Current Password"
+      test:
+        title: "Title"
+        level: "Level"
+        category: "Category"
+        author: "Author"
+      question:
+        body: "Question Body"
+        test: "Test"
+      answer:
+        body: "Answer Body"
+        correct: "Correct"
+        question: "Question"
+      category:
+        title: "Title"
+      test_passage:
+        user: "User"
+        test: "Test"
+        current_question: "Current Question"
+        correct_questions: "Correct Questions"
+    errors:
+      messages:
+        blank: "can't be blank"
+        invalid: "is invalid"
+        not_an_integer: "must be an integer"

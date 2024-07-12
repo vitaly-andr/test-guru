@@ -1,10 +1,10 @@
-<h1>Questions for <%= @test.title %></h1>
+<h1><%= t('admin.questions.index.header', test: @test.title) %></h1>
 
 <table>
   <thead>
   <tr>
-    <th>Body</th>
-    <th>Actions</th>
+    <th><%= t('admin.questions.index.body') %></th>
+    <th><%= t('admin.questions.index.actions') %></th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +12,6 @@
   </tbody>
 </table>
 <p>
-  |  <%= link_to 'New Question', new_admin_test_question_path(@test) %>  |
-  <%= link_to 'Back to Tests', admin_tests_path %>  |
+  |  <%= link_to t('admin.questions.index.new_question'), new_admin_test_question_path(@test) %>  |
+  <%= link_to t('admin.tests.back_to_tests'), admin_tests_path %>  |
 </p>

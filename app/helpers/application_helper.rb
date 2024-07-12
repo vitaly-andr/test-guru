@@ -1,7 +1,7 @@
 module ApplicationHelper
   def form_header(resource)
     model_name = resource.model_name.human.downcase
-    action = resource.new_record? ? 'Create new' : 'Edit'
+    action = resource.new_record? ? t('actions.create') : t('actions.edit')
     "#{action} #{model_name}"
   end
 
