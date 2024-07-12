@@ -1,11 +1,11 @@
-<h1>Answers for Question: <%= @question.body %></h1>
+<h1><%= t('admin.answers.index.header', question: @question.body) %></h1>
 
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>?</th>
-    <th>Actions</th>
+    <th><%= t('admin.answers.index.title') %></th>
+    <th><%= t('admin.answers.index.correct') %></th>
+    <th><%= t('admin.answers.index.actions') %></th>
   </tr>
   </thead>
   <tbody>
@@ -13,5 +13,5 @@
   </tbody>
 </table>
 
-<%= link_to 'New Answer', new_admin_question_answer_path(@question) %>
-<%= link_to 'Back to Questions', admin_test_questions_path(@question.test) %>
+<%= link_to t('admin.answers.index.new_answer'), new_admin_question_answer_path(@question) %>
+<%= link_to t('.back_to_questions'), admin_test_questions_path(@question.test) %>

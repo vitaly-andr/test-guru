@@ -1,0 +1,119 @@
+ru:
+  layout:
+    header:
+      title: "TestGuru"
+      logout: "Выйти"
+      login: "Войти"
+      admin_tests: "Управление тестами"
+      welcome: "Добро пожаловать, %{name}"
+    footer:
+      copyright: "%{year} Виталий Андрианов"
+      github: "TestGuru - Простое приложение для управления тестами."
+      thinknetica: "Учебный проект в онлайн-школе Thinknetica"
+  actions:
+    create: "Создать новый"
+    edit: "Редактировать"
+  devise:
+    sessions:
+      signed_in_admin: "Привет, %{name}! Не забудь, что ты Админ"
+      signed_in_user: "Привет, %{name}!"
+  helpers:
+    prompt:
+      category: "Выберите категорию"
+    label:
+      category:
+        title: "Название категории"
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+        author_id: "Автор"
+      question:
+        body: "Текст вопроса"
+      answer:
+        body: "Текст ответа"
+        correct: "Правильный"
+    submit:
+      test:
+        create: "Создать Тест"
+        update: "Обновить Тест"
+      question:
+        create: "Создать Вопрос"
+        update: "Обновить Вопрос"
+      answer:
+        create: "Создать Ответ"
+        update: "Обновить Ответ"
+      category:
+        create: "Создать Категорию"
+        update: "Обновить Категорию"
+      test_passage:
+        update: "Следующий вопрос"
+  tests:
+    index:
+      header: "Доступные тесты"
+      start: "Начать"
+  test_passages:
+    show:
+      header: "Прохождение теста \"%{title}\""
+      question_progress: "Вопрос %{current_question_number} из %{total_questions}"
+  admin:
+    categories:
+      back_to_categories: "Назад к категориям"
+      index:
+        header: "Категории"
+        title: "Название"
+        actions: "Действия"
+        new_category: "Новая Категория"
+        back_to_tests: "Назад к тестам"
+      show:
+        edit: "Редактировать"
+    tests:
+      back_to_tests: "Назад к тестам"
+      index:
+        header: "Доступные тесты"
+        title: "Название"
+        level: "Уровень"
+        questions_total: "Всего вопросов"
+        author: "Автор"
+        actions: "Действия"
+        new_test: "Новый Тест"
+        categories: "Категории"
+    questions:
+      for_test: "для теста \"%{test}\""
+      index:
+        header: "Вопросы для теста \"%{test}\""
+        body: "Тело"
+        actions: "Действия"
+        new_question: "Новый Вопрос"
+    answers:
+      correct: "Да"
+      incorrect: "Нет"
+      back_to_answers: "Назад к ответам"
+      back_to_question: "Назад к вопросу"
+      for_question: "для вопроса \"%{question}\""
+      index:
+        header: "Ответы на вопрос: %{question}"
+        title: "Название"
+        correct: "Правильный?"
+        actions: "Действия"
+        new_answer: "Новый ответ"
+        back_to_questions: "Назад к вопросам"
+      show:
+        correct: "Правильный?: %{correct}"
+        correct_yes: "Да"
+        correct_no: "Нет"
+        edit: "Редактировать"
+  shared:
+    actions:
+      edit: "Редактировать"
+      delete: "Удалить"
+      confirm_delete: "Вы уверены?"
+    errors:
+      header:
+        one: "%{count} ошибка не позволила сохранить %{resource}:"
+        few: "%{count} ошибки не позволили сохранить %{resource}:"
+        many: "%{count} ошибок не позволили сохранить %{resource}:"
+        other: "%{count} ошибки не позволили сохранить %{resource}:"
+      messages:
+        test_not_found: "Тест не найден"
+        access_denied: "Доступ запрещен"

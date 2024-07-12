@@ -1,6 +1,6 @@
 <h1><%= @answer.body %></h1>
 
-<p>Correct: <%= @answer.correct %></p>
+<p><%= t('admin.answers.show.correct', correct: @answer.correct ? t('admin.answers.show.correct_yes') : t('admin.answers.correct_no')) %></p>
 
-<%= link_to 'Edit', edit_admin_answer_path(@answer) %>
-<%= link_to 'Back to Answers', admin_question_answers_path(@answer.question) %>
+<%= link_to t('admin.answers.show.edit'), edit_admin_answer_path(@answer) %>
+<%= link_to t('admin.answers.back_to_answers'), admin_question_answers_path(@answer.question) %>

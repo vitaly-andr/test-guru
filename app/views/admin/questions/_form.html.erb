@@ -1,5 +1,5 @@
 <%= form_with model: [:admin, @test, @question],local: true do |form| %>
-  <h1><%= form_header(@question) %> for test "<%= @question.test.title %>"</h1>
+  <h1><%= form_header(@question) %> <%= t('admin.questions.for_test', test: @question.test.title) %></h1>
   <%= render 'shared/errors', resource: @question %>
   <p class="field">
     <%= form.text_area :body %>

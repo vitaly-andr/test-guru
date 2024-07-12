@@ -1,10 +1,11 @@
 class Admin::AnswersController < Admin::AdminController
-  before_action :set_question, only: [:index,:new, :create]
-  before_action :set_answer, only: [ :show,:edit, :update, :destroy]
+  before_action :set_question, only: [:index, :new, :create]
+  before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
   def index
     @answers = @question.answers
   end
+
   def new
     @answer = @question.answers.new
   end
@@ -12,7 +13,7 @@ class Admin::AnswersController < Admin::AdminController
   def create
     @answer = @question.answers.new(answer_params)
     if @answer.save
-      redirect_to admin_question_path(@question), notice: 'Answer was successfully created.'
+      redirect_to admin_question_path(@question), notice: t('helpers.submit.answer.create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +24,7 @@ class Admin::AnswersController < Admin::AdminController
 
   def update
     if @answer.update(answer_params)
-      redirect_to admin_question_path(@answer.question), notice: 'Answer was successfully updated.'
+      redirect_to admin_question_path(@answer.question), notice: t('helpers.submit.answer.update')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -31,7 +32,7 @@ class Admin::AnswersController < Admin::AdminController
 
   def destroy
     @answer.destroy
-    redirect_to admin_question_path(@answer.question), notice: 'Answer was successfully destroyed.'
+    redirect_to admin_question_path(@answer.question), notice: t('helpers.submit.answer.destroy')
   end
 
   private
@@ -47,5 +48,4 @@ class Admin::AnswersController < Admin::AdminController
   def answer_params
     params.require(:answer).permit(:body, :correct)
   end
-
 end

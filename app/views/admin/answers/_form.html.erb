@@ -1,5 +1,5 @@
 <%= form_with model: [:admin, @question, @answer], local: true do |form| %>
-  <h1><%= form_header(@answer) %> for question "<%= @answer.question.body %>"</h1>
+  <h1><%= form_header(@answer) %> <%= t('admin.answers.for_question', question: @answer.question.body) %></h1>
   <%= render 'shared/errors', resource: @answer %>
 
   <div class="field">

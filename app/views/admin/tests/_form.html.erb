@@ -14,11 +14,11 @@
 
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :title %>
+    <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: t('helpers.prompt.category') }%>
   </div>
 
   <div class="field">
-    <%= form.label :author_id, 'Author' %>
+    <%= form.label :author_id %>
     <%= form.collection_select :author_id, User.all, :id, :full_name %>
   </div>
 

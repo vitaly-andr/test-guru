@@ -2,8 +2,9 @@
   <td> <%= link_to test.title, admin_test_path(test) %></td>
   <td> <%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
+  <td><%= test.author.full_name %></td>
   <td class="actions">
-    <%= link_to 'Edit', edit_admin_test_path(test) %>
-    <%= link_to 'Delete', admin_test_path(test), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <%= link_to t('shared.actions.edit'), edit_admin_test_path(test) %>
+    <%= link_to t('shared.actions.delete'), admin_test_path(test), data: { turbo_method: :delete, turbo_confirm: t('shared.actions.confirm_delete') } %>
   </td>
 </tr>

@@ -1,8 +1,8 @@
 <tr>
-  <td> <%= link_to answer.body, admin_answer_path(answer) %></td>
-  <td><%= answer.correct ? 'Correct' : 'Incorrect' %></td>
+  <td><%= link_to answer.body, admin_answer_path(answer) %></td>
+  <td><%= answer.correct ? t('admin.answers.correct') : t('admin.answers.incorrect') %></td>
   <td class="actions">
-    <%= link_to 'Edit', edit_admin_answer_path(answer) %>
-    <%= link_to 'Delete', admin_answer_path(answer), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <%= link_to t('shared.actions.edit'), edit_admin_answer_path(answer) %>
+    <%= link_to t('shared.actions.delete'), admin_answer_path(answer), data: { turbo_method: :delete, turbo_confirm: t('admin.answers.confirm_delete') } %>
   </td>
 </tr>
