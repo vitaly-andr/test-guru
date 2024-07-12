@@ -1,0 +1,19 @@
+<h1>Tests</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Level</th>
+    <th>Questions total</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%= render @tests %>
+  </tbody>
+</table>
+<p>
+  |  <%= link_to 'New Test', new_admin_test_path %>  |
+  <%= link_to 'Categories', admin_categories_path %>  |
+</p>

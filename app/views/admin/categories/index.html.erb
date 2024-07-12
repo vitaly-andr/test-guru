@@ -1,0 +1,16 @@
+<h1>Categories</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+<%= render @categories %>
+  </tbody>
+</table>
+
+<%= link_to 'New Category', new_admin_category_path %>
+<%= link_to 'Back to tests', admin_tests_path %>
