@@ -1,12 +1,12 @@
 module TestPassagesHelper
   def test_result_message(test_passage)
-    success_percentage = test_passage.success_percentage
+    success_percentage = test_passage.success_percentage.round
 
     if test_passage.success?
-      message = "Congratulations! You passed the test with #{success_percentage.round}% success!"
+      message = t('test_passages.helper.success_message', success_percentage: success_percentage)
       color = "green"
     else
-      message = "Unfortunately, you did not pass the test. Your success rate is #{success_percentage.round}%."
+      message = t('test_passages.helper.failure_message', success_percentage: success_percentage)
       color = "red"
     end
 

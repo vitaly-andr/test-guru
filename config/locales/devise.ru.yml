@@ -96,6 +96,9 @@ ru:
     registrations:
       destroyed: До свидания! Ваша учетная запись удалена. Надеемся снова увидеть вас.
       edit:
+        first_name: Имя
+        last_name: Фамилия
+        email: Email
         are_you_sure: Вы уверены?
         cancel_my_account: Удалить учетную запись
         currently_waiting_confirmation_for_email: 'Ожидается подтверждение адреса E-mail: %{email}'

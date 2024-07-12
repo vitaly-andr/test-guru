@@ -53,6 +53,13 @@ ru:
       header: "Доступные тесты"
       start: "Начать"
   test_passages:
+    helper:
+      success_message: "Поздравляем! Вы прошли тест с результатом %{success_percentage}%!"
+      failure_message: "К сожалению, вы не прошли тест. Ваш результат %{success_percentage}%."
+    result:
+      header: "Тест %{title} завершен!"
+      subheader: "Результат теста"
+      all_tests: "Все тесты"
     show:
       header: "Прохождение теста \"%{title}\""
       question_progress: "Вопрос %{current_question_number} из %{total_questions}"

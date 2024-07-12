@@ -1,20 +1,126 @@
 en:
+  layout:
+    header:
+      title: "TestGuru"
+      logout: "Logout"
+      login: "Login"
+      admin_tests: "Manage Tests"
+      welcome: "Welcome, %{name}"
+    footer:
+      copyright: "%{year} Vitaly Andrianov"
+      github: "TestGuru - A simple application for test management."
+      thinknetica: "Training project at the online school Thinknetica"
+  actions:
+    create: "Create New"
+    edit: "Edit"
   devise:
     sessions:
-      signed_in_admin: "Hello, %{name}! Don't forget that you are an Admin!"
+      signed_in_admin: "Hello, %{name}! Remember, you are an Admin"
       signed_in_user: "Hello, %{name}!"
   helpers:
+    prompt:
+      category: "Select Category"
     label:
+      category:
+        title: "Category Name"
       test:
         title: "Title"
         level: "Level"
-        questions_total: "Questions total"
-        actions: "Actions"
+        category_id: "Category"
+        author_id: "Author"
+      question:
+        body: "Question Text"
+      answer:
+        body: "Answer Text"
+        correct: "Correct"
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+      question:
+        create: "Create Question"
+        update: "Update Question"
+      answer:
+        create: "Create Answer"
+        update: "Update Answer"
+      category:
+        create: "Create Category"
+        update: "Update Category"
+      test_passage:
+        update: "Next Question"
   tests:
     index:
-      header: "Tricky tests"
+      header: "Available Tests"
+      start: "Start"
+  test_passages:
+    helper:
+      success_message: "Congratulations! You passed the test with %{success_percentage}% success!"
+      failure_message: "Unfortunately, you did not pass the test. Your success rate is %{success_percentage}%."
+    result:
+      header: "Test %{title} completed!"
+      subheader: "Test Result"
+      all_tests: "All Tests"
+    show:
+      header: "Taking Test \"%{title}\""
+      question_progress: "Question %{current_question_number} of %{total_questions}"
+  admin:
+    categories:
+      back_to_categories: "Back to Categories"
+      index:
+        header: "Categories"
+        title: "Title"
+        actions: "Actions"
+        new_category: "New Category"
+        back_to_tests: "Back to Tests"
+      show:
+        edit: "Edit"
+    tests:
+      back_to_tests: "Back to Tests"
+      index:
+        header: "Available Tests"
+        title: "Title"
+        level: "Level"
+        questions_total: "Total Questions"
+        author: "Author"
+        actions: "Actions"
+        new_test: "New Test"
+        categories: "Categories"
+    questions:
+      for_test: "for test \"%{test}\""
+      index:
+        header: "Questions for test \"%{test}\""
+        body: "Body"
+        actions: "Actions"
+        new_question: "New Question"
+    answers:
+      correct: "Yes"
+      incorrect: "No"
+      back_to_answers: "Back to Answers"
+      back_to_question: "Back to Question"
+      for_question: "for question \"%{question}\""
+      index:
+        header: "Answers to question: %{question}"
+        title: "Title"
+        correct: "Correct?"
+        actions: "Actions"
+        new_answer: "New Answer"
+        back_to_questions: "Back to Questions"
+      show:
+        correct: "Correct?: %{correct}"
+        correct_yes: "Yes"
+        correct_no: "No"
+        edit: "Edit"
   shared:
+    actions:
+      edit: "Edit"
+      delete: "Delete"
+      confirm_delete: "Are you sure?"
     errors:
       header:
-        one: "%{count} error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "%{count} error prevented saving %{resource}:"
+        few: "%{count} errors prevented saving %{resource}:"
+        many: "%{count} errors prevented saving %{resource}:"
+        other: "%{count} errors prevented saving %{resource}:"
+      messages:
+        test_not_found: "Test not found"
+        access_denied: "Access denied"
