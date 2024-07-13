@@ -1,6 +1,6 @@
 <h1><%= t('admin.answers.index.header', question: @question.body) %></h1>
 
-<table>
+<table class="shadow rounded">
   <thead>
   <tr>
     <th><%= t('admin.answers.index.title') %></th>
@@ -12,6 +12,7 @@
   <%= render @answers %>
   </tbody>
 </table>
-
-<%= link_to t('admin.answers.index.new_answer'), new_admin_question_answer_path(@question) %>
-<%= link_to t('.back_to_questions'), admin_test_questions_path(@question.test) %>
+<div class="my-3">
+<%= link_to t('admin.answers.index.new_answer'), new_admin_question_answer_path(@question), class: 'btn btn-secondary' %>
+<%= link_to t('.back_to_questions'), admin_test_questions_path(@question.test), class: 'btn btn-secondary' %>
+</div>
