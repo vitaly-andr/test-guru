@@ -36,7 +36,7 @@ class Admin::TestsController < Admin::AdminController
 
   def destroy
     @test.destroy
-    redirect_to admin_tests_path, notice: t('helpers.submit.test.destroy')
+    redirect_to admin_tests_path, notice: t('shared.flash.deleted.test')
   end
 
   private
