@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
     end
     resources :categories
+    resources :users
   end
 
   resources :tests, only: [:index] do

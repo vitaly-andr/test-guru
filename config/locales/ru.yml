@@ -9,8 +9,11 @@ ru:
       title: "TestGuru"
       logout: "Выйти"
       login: "Войти"
-      admin_tests: "Управление тестами"
+      admin_panel: "Управление"
+      manage_tests: "Управление тестами"
       welcome: "Добро пожаловать, %{name}"
+      manage_categories: "Управление категориями"
+      manage_users: "Управление пользователями"
     footer:
       copyright: "%{year} Виталий Андрианов"
       github: "TestGuru - Простое приложение для управления тестами."
@@ -147,5 +150,5 @@ ru:
         many: "%{count} ошибок не позволили сохранить %{resource}:"
         other: "%{count} ошибки не позволили сохранить %{resource}:"
       messages:
-        test_not_found: "Тест не найден"
+        record_not_found: "%{model} отсутствует в базе данных"
         access_denied: "Доступ запрещен"
