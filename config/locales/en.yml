@@ -1,4 +1,9 @@
 en:
+  test_levels:
+    easy: "Easy"
+    elementary: "Elementary"
+    hard: "Hard"
+    hero: "Hero"
   layout:
     header:
       title: "TestGuru"
@@ -52,6 +57,10 @@ en:
     index:
       header: "Available Tests"
       start: "Start"
+      title: "Title"
+      level: "Level"
+      questions_total: "Questions total"
+      actions: "Actions"
   test_passages:
     helper:
       success_message: "Congratulations! You passed the test with %{success_percentage}% success!"
@@ -111,6 +120,22 @@ en:
         correct_no: "No"
         edit: "Edit"
   shared:
+    flash:
+      created:
+        test: "Test was successfully created."
+        question: "Question was successfully created."
+        answer: "Answer was successfully created."
+        category: "Category was successfully created."
+      updated:
+        test: "Test was successfully updated."
+        question: "Question was successfully updated."
+        answer: "Answer was successfully updated."
+        category: "Category was successfully updated."
+      deleted:
+        test: "Test was successfully deleted."
+        question: "Question was successfully deleted."
+        answer: "Answer was successfully deleted."
+        category: "Category was successfully deleted."
     actions:
       edit: "Edit"
       delete: "Delete"

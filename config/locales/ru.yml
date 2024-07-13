@@ -1,4 +1,9 @@
 ru:
+  test_levels:
+    easy: "Легкий"
+    elementary: "Элементарный"
+    hard: "Трудный"
+    hero: "Для героев"
   layout:
     header:
       title: "TestGuru"
@@ -52,6 +57,10 @@ ru:
     index:
       header: "Доступные тесты"
       start: "Начать"
+      title: "Название"
+      level: "Уровень"
+      questions_total: "Кол-во вопросов"
+      actions: "Действия"
   test_passages:
     helper:
       success_message: "Поздравляем! Вы прошли тест с результатом %{success_percentage}%!"
@@ -111,6 +120,22 @@ ru:
         correct_no: "Нет"
         edit: "Редактировать"
   shared:
+    flash:
+      created:
+        test: "Тест был успешно создан."
+        question: "Вопрос был успешно создан."
+        answer: "Ответ был успешно создан."
+        category: "Категория была успешно создана."
+      updated:
+        test: "Тест был успешно обновлен."
+        question: "Вопрос был успешно обновлен."
+        answer: "Ответ был успешно обновлен."
+        category: "Категория была успешно обновлена."
+      deleted:
+        test: "Тест был успешно удален."
+        question: "Вопрос был успешно удален."
+        answer: "Ответ был успешно удален."
+        category: "Категория была успешно удалена."
     actions:
       edit: "Редактировать"
       delete: "Удалить"
