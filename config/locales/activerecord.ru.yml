@@ -24,6 +24,11 @@ ru:
         body: "Текст вопроса"
         test: "Тест"
       answer:
+        attributes:
+          base:
+            errors:
+              questions:
+                too_many: "не может содержать более 4 ответов"
         body: "Текст ответа"
         correct: "Правильный"
         question: "Вопрос"
@@ -39,3 +44,5 @@ ru:
         blank: "не может быть пустым"
         invalid: "неверный"
         not_an_integer: "должно быть целым числом"
+        record_invalid: "Запись содержит ошибки: %{errors}"
+
