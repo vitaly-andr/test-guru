@@ -1,18 +1,24 @@
 <%= form_with model: [:admin, @question, @answer], local: true do |form| %>
-  <h1><%= form_header(@answer) %> <%= t('admin.answers.for_question', question: @answer.question.body) %></h1>
-  <%= render 'shared/errors', resource: @answer %>
+  <div class="card shadow">
+    <div class="card-header">
+      <h1><%= form_header(@answer) %> <%= t('admin.answers.for_question', question: @answer.question.body) %></h1>
+    </div>
+    <div class="card-body">
+      <%= render 'shared/errors', resource: @answer %>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
+      <div class="form-group">
+        <%= form.label :body, class: "form-label" %>
+        <%= form.text_area :body, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :correct %>
-    <%= form.check_box :correct %>
-  </div>
+      <div class="form-group">
+        <%= form.label :correct, class: "form-label" %>
+        <%= form.check_box :correct, class: "form-check-input" %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="form-group mt-3">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% end %>
