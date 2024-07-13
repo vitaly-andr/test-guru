@@ -1,6 +1,6 @@
-<h1>Categories</h1>
+<h1><%= t('admin.categories.index.header') %></h1>
 
-<table>
+<table class="shadow rounded">
   <thead>
   <tr>
     <th><%= t('admin.categories.index.title') %></th>
@@ -8,9 +8,11 @@
   </tr>
   </thead>
   <tbody>
-<%= render @categories %>
+  <%= render @categories %>
   </tbody>
 </table>
 
-<%= link_to t('admin.categories.index.new_category'), new_admin_category_path %>
-<%= link_to t('admin.categories.index.back_to_tests'), admin_tests_path %>
+<div class="my-3">
+  <%= link_to t('admin.categories.index.new_category'), new_admin_category_path, class: 'btn btn-secondary' %>
+  <%= link_to t('admin.categories.index.back_to_tests'), admin_tests_path, class: 'btn btn-secondary' %>
+</div>

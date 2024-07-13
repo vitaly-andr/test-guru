@@ -24,6 +24,10 @@ en:
         body: "Question Body"
         test: "Test"
       answer:
+        base:
+          errors:
+            questions:
+              too_many: "can't have more than 4 answers"
         body: "Answer Body"
         correct: "Correct"
         question: "Question"
@@ -39,3 +43,4 @@ en:
         blank: "can't be blank"
         invalid: "is invalid"
         not_an_integer: "must be an integer"
+        record_invalid: "Validation failed: %{errors}"

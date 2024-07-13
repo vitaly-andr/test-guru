@@ -2,7 +2,7 @@
   <td><%= link_to answer.body, admin_answer_path(answer) %></td>
   <td><%= answer.correct ? t('admin.answers.correct') : t('admin.answers.incorrect') %></td>
   <td class="actions">
-    <%= link_to t('shared.actions.edit'), edit_admin_answer_path(answer) %>
-    <%= link_to t('shared.actions.delete'), admin_answer_path(answer), data: { turbo_method: :delete, turbo_confirm: t('admin.answers.confirm_delete') } %>
+    <%= link_to t('shared.actions.edit'), edit_admin_answer_path(answer), class: 'btn btn-sm btn-outline-secondary' %>
+    <%= link_to t('shared.actions.delete'), admin_answer_path(answer), data: { turbo_method: :delete, turbo_confirm: t('shared.actions.confirm_delete') }, class: 'btn btn-sm btn-outline-danger' %>
   </td>
 </tr>

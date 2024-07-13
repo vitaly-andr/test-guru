@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_not_found
+
   before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -34,5 +36,10 @@ class ApplicationController < ActionController::Base
       flash[:notice] = t('devise.sessions.signed_in_user', name: current_user.first_name)
       stored_location_for(resource_or_scope) || super
     end
+  end
+  def rescue_with_record_not_found(exception)
+    model_name = exception.model.constantize.model_name.human
+    flash[:alert] = t('shared.errors.messages.record_not_found', model: model_name)
+    redirect_to(root_path)
   end
 end

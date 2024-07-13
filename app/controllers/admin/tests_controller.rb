@@ -1,7 +1,6 @@
 class Admin::TestsController < Admin::AdminController
   before_action :set_test, only: %i[show edit update destroy]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_test_not_found
 
   def index
     @tests = Test.all
@@ -37,7 +36,7 @@ class Admin::TestsController < Admin::AdminController
 
   def destroy
     @test.destroy
-    redirect_to admin_tests_path, notice: t('helpers.submit.test.destroy')
+    redirect_to admin_tests_path, notice: t('shared.flash.deleted.test')
   end
 
   private
@@ -50,7 +49,4 @@ class Admin::TestsController < Admin::AdminController
     params.require(:test).permit(:title, :level, :category_id)
   end
 
-  def rescue_with_test_not_found
-    render plain: t('errors.messages.test_not_found'), status: 404
-  end
 end

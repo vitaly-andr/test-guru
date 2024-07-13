@@ -1,6 +1,6 @@
-<h1><%=  t('.header')%></h1>
+<h1><%= t('.header') %></h1>
 
-<table>
+<table class="shadow rounded">
   <thead>
   <tr>
     <th><%= t('.title') %></th>
@@ -14,7 +14,6 @@
   <%= render @tests %>
   </tbody>
 </table>
-<p>
-  |  <%= link_to t('.new_test'), new_admin_test_path %>  |
-  <%= link_to t('.categories'), admin_categories_path %>  |
+<p class="mt-3">
+  <%= link_to t('.new_test'), new_admin_test_path, class: "btn btn-secondary" %>
 </p>

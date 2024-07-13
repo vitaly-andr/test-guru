@@ -1,11 +1,19 @@
-<%= form_with model: [:admin, @test, @question],local: true do |form| %>
-  <h1><%= form_header(@question) %> <%= t('admin.questions.for_test', test: @question.test.title) %></h1>
-  <%= render 'shared/errors', resource: @question %>
-  <p class="field">
-    <%= form.text_area :body %>
-  </p>
+<%= form_with model: [:admin, @test, @question], local: true do |form| %>
+  <div class="card shadow">
+    <div class="card-header">
+      <h1><%= form_header(@question) %> <%= t('admin.questions.for_test', test: @question.test.title) %></h1>
+    </div>
+    <div class="card-body">
+      <%= render 'shared/errors', resource: @question %>
 
-  <p class="actions">
-    <%= form.submit %>
-  </p>
+      <div class="form-group">
+        <%= form.label :body, class: "form-label" %>
+        <%= form.text_area :body, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
 <% end %>

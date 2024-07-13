@@ -1,11 +1,19 @@
 ru:
+  test_levels:
+    easy: "Легкий"
+    elementary: "Элементарный"
+    hard: "Трудный"
+    hero: "Для героев"
   layout:
     header:
       title: "TestGuru"
       logout: "Выйти"
       login: "Войти"
-      admin_tests: "Управление тестами"
+      admin_panel: "Управление"
+      manage_tests: "Управление тестами"
       welcome: "Добро пожаловать, %{name}"
+      manage_categories: "Управление категориями"
+      manage_users: "Управление пользователями"
     footer:
       copyright: "%{year} Виталий Андрианов"
       github: "TestGuru - Простое приложение для управления тестами."
@@ -52,6 +60,10 @@ ru:
     index:
       header: "Доступные тесты"
       start: "Начать"
+      title: "Название"
+      level: "Уровень"
+      questions_total: "Кол-во вопросов"
+      actions: "Действия"
   test_passages:
     helper:
       success_message: "Поздравляем! Вы прошли тест с результатом %{success_percentage}%!"
@@ -111,6 +123,22 @@ ru:
         correct_no: "Нет"
         edit: "Редактировать"
   shared:
+    flash:
+      created:
+        test: "Тест был успешно создан."
+        question: "Вопрос был успешно создан."
+        answer: "Ответ был успешно создан."
+        category: "Категория была успешно создана."
+      updated:
+        test: "Тест был успешно обновлен."
+        question: "Вопрос был успешно обновлен."
+        answer: "Ответ был успешно обновлен."
+        category: "Категория была успешно обновлена."
+      deleted:
+        test: "Тест был успешно удален."
+        question: "Вопрос был успешно удален."
+        answer: "Ответ был успешно удален."
+        category: "Категория была успешно удалена."
     actions:
       edit: "Редактировать"
       delete: "Удалить"
@@ -122,5 +150,26 @@ ru:
         many: "%{count} ошибок не позволили сохранить %{resource}:"
         other: "%{count} ошибки не позволили сохранить %{resource}:"
       messages:
-        test_not_found: "Тест не найден"
+        record_not_found: "%{model} отсутствует в базе данных"
         access_denied: "Доступ запрещен"
+        taken: "уже занято"
+        blank: "не может быть пустым"
+        invalid: "недействительно"
+        confirmation: "не совпадает с подтверждением"
+        accepted: "должно быть принято"
+        too_long: "слишком длинное (не может быть больше %{count} символов)"
+        too_short: "слишком короткое (не может быть меньше %{count} символов)"
+        wrong_length: "неверной длины (должно быть %{count} символов)"
+        not_a_number: "не число"
+        greater_than: "должно быть больше %{count}"
+        greater_than_or_equal_to: "должно быть больше или равно %{count}"
+        equal_to: "должно быть равно %{count}"
+        less_than: "должно быть меньше %{count}"
+        less_than_or_equal_to: "должно быть меньше или равно %{count}"
+        other_than: "должно быть не равно %{count}"
+        even: "должно быть четным"
+        odd: "должно быть нечетным"
+        record_invalid: "Запись недействительна: %{errors}"
+        restrict_dependent_destroy:
+          one: "Невозможно удалить запись, так как существует зависимая %{record}"
+          many: "Невозможно удалить запись, так как существуют зависимые %{record}"

@@ -13,7 +13,7 @@ class Admin::AnswersController < Admin::AdminController
   def create
     @answer = @question.answers.new(answer_params)
     if @answer.save
-      redirect_to admin_question_path(@question), notice: t('helpers.submit.answer.create')
+      redirect_to admin_question_path(@question), notice: t('shared.flash.created.answer')
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class Admin::AnswersController < Admin::AdminController
 
   def update
     if @answer.update(answer_params)
-      redirect_to admin_question_path(@answer.question), notice: t('helpers.submit.answer.update')
+      redirect_to admin_question_path(@answer.question), notice: t('shared.flash.updated.answer')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class Admin::AnswersController < Admin::AdminController
 
   def destroy
     @answer.destroy
-    redirect_to admin_question_path(@answer.question), notice: t('helpers.submit.answer.destroy')
+    redirect_to admin_question_path(@answer.question), notice: t('shared.flash.deleted.answer')
   end
 
   private

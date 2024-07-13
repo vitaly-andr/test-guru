@@ -1,7 +1,8 @@
 <tr>
   <td><%= link_to category.title, admin_category_path(category) %></td>
   <td class="actions">
-    <%= link_to t('shared.actions.edit'), edit_admin_category_path(category) %>
-    <%= link_to t('shared.actions.delete'), admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <%= link_to t('shared.actions.edit'), edit_admin_category_path(category), class: 'btn btn-sm btn-outline-secondary'  %>
+    <%= link_to t('shared.actions.delete'), admin_category_path(category), data: { turbo_method: :delete, turbo_confirm: t('shared.actions.confirm_delete') }, class: 'btn btn-sm btn-outline-danger' %>
   </td>
 <tr>
+

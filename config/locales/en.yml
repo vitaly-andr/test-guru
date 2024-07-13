@@ -1,28 +1,36 @@
 en:
+  test_levels:
+    easy: "Easy"
+    elementary: "Elementary"
+    hard: "Hard"
+    hero: "For Heroes"
   layout:
     header:
       title: "TestGuru"
       logout: "Logout"
       login: "Login"
-      admin_tests: "Manage Tests"
+      admin_panel: "Admin Panel"
+      manage_tests: "Manage Tests"
       welcome: "Welcome, %{name}"
+      manage_categories: "Manage Categories"
+      manage_users: "Manage Users"
     footer:
       copyright: "%{year} Vitaly Andrianov"
-      github: "TestGuru - A simple application for test management."
-      thinknetica: "Training project at the online school Thinknetica"
+      github: "TestGuru - A simple test management application."
+      thinknetica: "Educational project at Thinknetica online school"
   actions:
-    create: "Create New"
+    create: "Create new"
     edit: "Edit"
   devise:
     sessions:
-      signed_in_admin: "Hello, %{name}! Remember, you are an Admin"
+      signed_in_admin: "Hello, %{name}! Don't forget, you are an Admin"
       signed_in_user: "Hello, %{name}!"
   helpers:
     prompt:
-      category: "Select Category"
+      category: "Select a category"
     label:
       category:
-        title: "Category Name"
+        title: "Category Title"
       test:
         title: "Title"
         level: "Level"
@@ -52,16 +60,20 @@ en:
     index:
       header: "Available Tests"
       start: "Start"
+      title: "Title"
+      level: "Level"
+      questions_total: "Number of Questions"
+      actions: "Actions"
   test_passages:
     helper:
-      success_message: "Congratulations! You passed the test with %{success_percentage}% success!"
-      failure_message: "Unfortunately, you did not pass the test. Your success rate is %{success_percentage}%."
+      success_message: "Congratulations! You passed the test with a score of %{success_percentage}%!"
+      failure_message: "Unfortunately, you did not pass the test. Your score is %{success_percentage}%."
     result:
       header: "Test %{title} completed!"
       subheader: "Test Result"
       all_tests: "All Tests"
     show:
-      header: "Taking Test \"%{title}\""
+      header: "Taking the test \"%{title}\""
       question_progress: "Question %{current_question_number} of %{total_questions}"
   admin:
     categories:
@@ -86,9 +98,9 @@ en:
         new_test: "New Test"
         categories: "Categories"
     questions:
-      for_test: "for test \"%{test}\""
+      for_test: "for the test \"%{test}\""
       index:
-        header: "Questions for test \"%{test}\""
+        header: "Questions for the test \"%{test}\""
         body: "Body"
         actions: "Actions"
         new_question: "New Question"
@@ -97,9 +109,9 @@ en:
       incorrect: "No"
       back_to_answers: "Back to Answers"
       back_to_question: "Back to Question"
-      for_question: "for question \"%{question}\""
+      for_question: "for the question \"%{question}\""
       index:
-        header: "Answers to question: %{question}"
+        header: "Answers to the question: %{question}"
         title: "Title"
         correct: "Correct?"
         actions: "Actions"
@@ -111,16 +123,51 @@ en:
         correct_no: "No"
         edit: "Edit"
   shared:
+    flash:
+      created:
+        test: "Test was successfully created."
+        question: "Question was successfully created."
+        answer: "Answer was successfully created."
+        category: "Category was successfully created."
+      updated:
+        test: "Test was successfully updated."
+        question: "Question was successfully updated."
+        answer: "Answer was successfully updated."
+        category: "Category was successfully updated."
+      deleted:
+        test: "Test was successfully deleted."
+        question: "Question was successfully deleted."
+        answer: "Answer was successfully deleted."
+        category: "Category was successfully deleted."
     actions:
       edit: "Edit"
       delete: "Delete"
       confirm_delete: "Are you sure?"
     errors:
       header:
-        one: "%{count} error prevented saving %{resource}:"
-        few: "%{count} errors prevented saving %{resource}:"
-        many: "%{count} errors prevented saving %{resource}:"
-        other: "%{count} errors prevented saving %{resource}:"
+        one: "%{count} error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
       messages:
-        test_not_found: "Test not found"
+        record_not_found: "%{model} not found in the database"
         access_denied: "Access denied"
+        taken: "has already been taken"
+        blank: "can't be blank"
+        invalid: "is invalid"
+        confirmation: "doesn't match confirmation"
+        accepted: "must be accepted"
+        too_long: "is too long (maximum is %{count} characters)"
+        too_short: "is too short (minimum is %{count} characters)"
+        wrong_length: "is the wrong length (should be %{count} characters)"
+        not_a_number: "is not a number"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        equal_to: "must be equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        other_than: "must be other than %{count}"
+        even: "must be even"
+        odd: "must be odd"
+        record_invalid: "Record is invalid: %{errors}"
+        restrict_dependent_destroy:
+          one: "Cannot delete record because a dependent %{record} exists"
+          many: "Cannot delete record because dependent %{record} exist"

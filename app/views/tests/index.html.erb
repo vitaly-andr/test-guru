@@ -1,15 +1,14 @@
 <h1><%= t(".header") %></h1>
-<table>
+<table class="shadow rounded">
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Level</th>
-    <th>Questions total</th>
-    <th>Actions</th>
+    <th><%= t(".title") %></th>
+    <th><%= t(".level") %></th>
+    <th><%= t(".questions_total") %></th>
+    <th><%= t(".actions") %></th>
   </tr>
   </thead>
   <tbody>
   <%= render @tests %>
   </tbody>
 </table>
-

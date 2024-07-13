@@ -1,8 +1,12 @@
 <h1><%= t('.header', title: @test_passage.test.title) %></h1>
-<h2><%= t('.subheader') %></h2>
+<h2 class="mt-4"><%= t('.subheader') %></h2>
 
-<p>
-  <%= test_result_message(@test_passage) %>
-</p>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <p >
+      <%= test_result_message(@test_passage) %>
+    </p>
 
-<%= link_to t('.all_tests'), tests_path %>
+    <%= link_to t('.all_tests'), tests_path, class: "btn btn-primary" %>
+  </div>
+</div>

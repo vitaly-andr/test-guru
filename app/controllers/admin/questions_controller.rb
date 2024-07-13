@@ -17,7 +17,7 @@ class Admin::QuestionsController < Admin::AdminController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to admin_test_path(@test), notice: t('helpers.submit.question.create')
+      redirect_to admin_test_path(@test), notice: t('shared.flash.created.question')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def update
     if @question.update(question_params)
-      redirect_to admin_test_path(@question.test), notice: t('helpers.submit.question.update')
+      redirect_to admin_test_path(@question.test), notice: t('shared.flash.updated.question')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Admin::QuestionsController < Admin::AdminController
 
   def destroy
     @question.destroy
-    redirect_to admin_test_path(@question.test), notice: t('helpers.submit.question.destroy')
+    redirect_to admin_test_path(@question.test), notice: t('shared.flash.deleted.question')
   end
 
   private

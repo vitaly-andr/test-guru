@@ -10,37 +10,68 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body>
-<header>
-  <nav>
-    <%= link_to t('layout.header.title'), root_path %>
-    <% if user_signed_in? %>
-      <p class="nav user">
-        <%= t('layout.header.welcome', name: current_user.full_name) %>
-        <%= link_to t('layout.header.logout'), destroy_user_session_path, data: { turbo_method: :delete } %>
-      </p>
-      <% if current_user.admin? %>
-        <%= link_to t('layout.header.admin_tests'), admin_tests_path %>
-      <% end %>
-    <% else %>
-      <%= link_to t('layout.header.login'), new_user_session_path %>
-    <% end %>
-  </nav>
+<body class="d-flex flex-column min-vh-100">
+<header id="header" class="header">
+  <div class="bg-light">
+    <div class="container">
+      <nav class="navbar navbar-expand-md navbar-light bg-light w-100 d-flex align-items-end">
+        <div class="container-fluid justify-content-between">
+          <%= link_to t('layout.header.title'), root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <% if user_signed_in? && current_user.admin? %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= t('layout.header.admin_panel') %>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                    <li>
+                      <%= link_to t('layout.header.manage_tests'), admin_tests_path, class: "dropdown-item" %>
+                    </li>
+                    <li>
+                      <%= link_to t('layout.header.manage_categories'), admin_categories_path, class: "dropdown-item" %>
+                    </li>
+                    <li>
+                      <%= link_to t('layout.header.manage_users'), admin_users_path, class: "dropdown-item" %>
+                    </li>
+                  </ul>
+                </li>
+              <% end %>
+            </ul>
+            <div class="d-flex align-items-end">
+              <% if user_signed_in? %>
+              <span class="navbar-text me-3">
+                <%= t('layout.header.welcome', name: current_user.full_name) %>
+              </span>
+                <%= link_to t('layout.header.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+              <% else %>
+                <%= link_to t('layout.header.login'), new_user_session_path, class: "nav-link" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
 </header>
-
-<main>
-  <%= yield %>
+<main class="container mt-4">
   <%= flash_messages %>
+  <%= yield %>
 </main>
 
-<footer>
-  <p>&copy;<%= t('layout.footer.copyright', year: current_year) %></p>
-  <p>
-    <%= github_url('vitaly-andr', 'test-guru', t('layout.footer.github')) %>
-  </p>
-  <p>
-    <%= link_to t('layout.footer.thinknetica'), 'https://thinknetica.com' %>
-  </p>
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <p>&copy;<%= t('layout.footer.copyright', year: current_year) %></p>
+    <p>
+      <%= github_url('vitaly-andr', 'test-guru', t('layout.footer.github')) %>
+    </p>
+    <p>
+      <%= link_to t('layout.footer.thinknetica'), 'https://thinknetica.com' %>
+    </p>
+  </div>
 </footer>
 </body>
 </html>
