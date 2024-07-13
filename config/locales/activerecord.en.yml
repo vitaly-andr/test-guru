@@ -24,11 +24,10 @@ en:
         body: "Question Body"
         test: "Test"
       answer:
-        attributes:
-          base:
-            errors:
-              questions:
-                too_many: "can't have more than 4 answers"
+        base:
+          errors:
+            questions:
+              too_many: "can't have more than 4 answers"
         body: "Answer Body"
         correct: "Correct"
         question: "Question"

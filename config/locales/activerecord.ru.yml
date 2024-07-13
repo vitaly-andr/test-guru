@@ -24,11 +24,10 @@ ru:
         body: "Текст вопроса"
         test: "Тест"
       answer:
-        attributes:
-          base:
-            errors:
-              questions:
-                too_many: "не может содержать более 4 ответов"
+        base:
+          errors:
+            questions:
+              too_many: "не может содержать более 4 ответов"
         body: "Текст ответа"
         correct: "Правильный"
         question: "Вопрос"
