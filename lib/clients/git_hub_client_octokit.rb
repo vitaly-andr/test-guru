@@ -1,8 +1,6 @@
 class GitHubClientOctokit
-  ROOT_ENDPOINT = 'https://api.github.com'
-
   def initialize
-    @access_token = ENV['GITHUB_TOKEN']
+    @access_token = ENV['GITHUB_GIST_TOKEN']
     raise 'Access token not found' if @access_token.nil?
 
     @client = setup_client

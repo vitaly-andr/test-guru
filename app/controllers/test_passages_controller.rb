@@ -5,9 +5,11 @@ class TestPassagesController < ApplicationController
   def show
     puts "show - #{@test_passage.current_question.inspect}"
   end
+
   def result
 
   end
+
   def update
     @test_passage.accept!(params[:answer_ids])
     if @test_passage.completed?
@@ -18,18 +20,20 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-
     client = params[:client]
     service = GistQuestionService.new(@test_passage.current_question, client: client)
     result = service.call
 
-    flash_options = if result[:success]
-                      { notice: t('.success', url: result[:html_url]).html_safe }
-                    else
-                      { alert: t('.failure')}
-                    end
+    if result[:success]
+      link = view_context.link_to(t('.view_gist'), result[:html_url], target: '_blank')
+      flash_message = t('.success', link: link)
+      flash[:notice] = flash_message
+    else
+      flash_message = t('.failure')
+      flash[:alert] = flash_message
+    end
 
-    redirect_to @test_passage, flash_options
+    redirect_to @test_passage
   end
 
   private

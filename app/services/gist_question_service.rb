@@ -12,7 +12,7 @@ class GistQuestionService
   private
 
   def initialize_client(client)
-    case client
+    case client&.to_sym
     when :octokit
       GitHubClientOctokit.new
     else
