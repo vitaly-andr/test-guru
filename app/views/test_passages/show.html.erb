@@ -27,7 +27,11 @@
       </div>
   <% end %>
     <p class="mt-3">
-      <%= link_to 'send Gist',  gist_test_passage_path(@test_passage), data: { turbo_method: :post} %>
+      <%= link_to 'Send Gist (Faraday)', gist_test_passage_path(@test_passage), data: { turbo_method: :post } %>
+    </p>
+
+    <p class="mt-3">
+      <%= link_to 'Send Gist (Octokit)', gist_test_passage_path(@test_passage, client: 'octokit'), data: { turbo_method: :post } %>
     </p>
   </div>
 </div>

@@ -18,12 +18,13 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    puts "gist -#{@test_passage.inspect} -  #{@test_passage.current_question.inspect}"
 
-    result = GistQuestionService.new(@test_passage.current_question).call
+    client = params[:client]
+    service = GistQuestionService.new(@test_passage.current_question, client: client)
+    result = service.call
 
-    flash_options = if result.success?
-                      { notice: t('.success')}
+    flash_options = if result[:success]
+                      { notice: t('.success', url: result[:html_url]).html_safe }
                     else
                       { alert: t('.failure')}
                     end

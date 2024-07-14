@@ -1,4 +1,4 @@
-class GitHubClient
+class GitHubClientFaraday
   ROOT_ENDPOINT = 'https://api.github.com'
 
   def initialize
@@ -9,18 +9,25 @@ class GitHubClient
   end
 
   def create_gist(params)
-    puts "Using access token: #{@access_token}" # Дополнительный вывод токена
     response = @http_client.post('gists') do |request|
       request.headers['Authorization'] = "token #{@access_token}"
       request.headers['Content-Type'] = 'application/json'
       request.body = params.to_json
     end
+    parse_response(response)
   end
 
   private
 
   def setup_http_client
     Faraday.new(url: ROOT_ENDPOINT)
+  end
+  def parse_response(response)
+    if response.status == 201
+      { success: true, html_url: JSON.parse(response.body)["html_url"] }
+    else
+      { success: false }
+    end
   end
 
 end

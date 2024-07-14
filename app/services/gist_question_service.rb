@@ -2,7 +2,7 @@ class GistQuestionService
   def initialize(question, client: nil)
     @question = question
     @test = @question.test
-    @client = client || GitHubClient.new
+    @client = initialize_client(client)
   end
 
   def call
@@ -10,6 +10,15 @@ class GistQuestionService
   end
 
   private
+
+  def initialize_client(client)
+    case client
+    when :octokit
+      GitHubClientOctokit.new
+    else
+      GitHubClientFaraday.new
+    end
+  end
 
   def gist_params
     {
@@ -27,5 +36,4 @@ class GistQuestionService
     content += @question.answers.pluck(:body)
     content.join("\n")
   end
-
 end
