@@ -12,6 +12,8 @@ gem "bootstrap"
 gem "sassc-rails"
 gem 'faraday'
 gem 'octokit'
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'

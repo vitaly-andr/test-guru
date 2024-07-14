@@ -2,7 +2,7 @@ class GitHubClient
   ROOT_ENDPOINT = 'https://api.github.com'
 
   def initialize
-    @access_token = Rails.application.credentials.dig(:github, :access_token)
+    @access_token = ENV['GITHUB_GIST_TOKEN']
     raise 'Access token not found' if @access_token.nil?
 
     @http_client = setup_http_client
