@@ -10,7 +10,8 @@ gem 'annotate'
 gem 'devise'
 gem "bootstrap"
 gem "sassc-rails"
-
+gem 'faraday'
+gem 'octokit'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'

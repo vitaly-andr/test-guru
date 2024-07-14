@@ -75,6 +75,9 @@ ru:
     show:
       header: "Прохождение теста \"%{title}\""
       question_progress: "Вопрос %{current_question_number} из %{total_questions}"
+    gist:
+      success: "Gist успешно создан"
+      failure: "Не удалось создать Gist"
   admin:
     categories:
       back_to_categories: "Назад к категориям"

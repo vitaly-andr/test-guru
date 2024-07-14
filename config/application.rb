@@ -12,6 +12,8 @@ module TestGuru
     config.load_defaults 7.1
     config.time_zone = 'Moscow'
     config.i18n.default_locale = :ru
+    config.autoload_paths << Rails.root.join('/lib/clients')
+    config.eager_load_paths << Rails.root.join('lib/clients')
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

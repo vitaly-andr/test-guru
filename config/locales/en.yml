@@ -75,6 +75,9 @@ en:
     show:
       header: "Taking the test \"%{title}\""
       question_progress: "Question %{current_question_number} of %{total_questions}"
+    gist:
+      success: "Gist successfully created "
+      failure: "Failed Gist creation"
   admin:
     categories:
       back_to_categories: "Back to Categories"
