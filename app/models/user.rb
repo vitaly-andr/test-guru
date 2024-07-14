@@ -31,6 +31,7 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :test_passages
+  has_many :gists, dependent: :destroy
   has_many :tests, through: :test_passages
   has_many :authored_tests, class_name: 'Test', foreign_key: 'author_id', inverse_of: :author
 

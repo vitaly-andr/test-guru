@@ -14,6 +14,7 @@ ru:
       welcome: "Добро пожаловать, %{name}"
       manage_categories: "Управление категориями"
       manage_users: "Управление пользователями"
+      manage_gists: "Просмотр Gist'ов"
     footer:
       copyright: "%{year} Виталий Андрианов"
       github: "TestGuru - Простое приложение для управления тестами."
@@ -126,6 +127,14 @@ ru:
         correct_yes: "Да"
         correct_no: "Нет"
         edit: "Редактировать"
+    gists:
+      index:
+        title: "Список Gist'ов"
+        headers:
+          question: "Вопрос"
+          url: "Gist URL"
+          user: "Пользователь"
+        no_gists: "Нет созданных Gist'ов"
   shared:
     flash:
       created:
