@@ -3,6 +3,7 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result gist]
 
   def show
+    puts "show - #{@test_passage.current_question.inspect}"
   end
   def result
 
@@ -17,7 +18,7 @@ class TestPassagesController < ApplicationController
   end
 
   def gist
-    # puts @test_passage.current_question.inspect
+    puts "gist -#{@test_passage.inspect} -  #{@test_passage.current_question.inspect}"
 
     result = GistQuestionService.new(@test_passage.current_question).call
 
