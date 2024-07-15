@@ -82,6 +82,8 @@ en:
     success: "Gist created successfully! %{link}"
     failure: "Failed Gist creation"
     view_gist: "View Gist"
+    create:
+      database_error: "Database error"
   admin:
     categories:
       back_to_categories: "Back to Categories"

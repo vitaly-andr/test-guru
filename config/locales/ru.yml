@@ -82,6 +82,8 @@ ru:
     success: "Gist успешно создан! %{link}"
     failure: "Не удалось создать Gist"
     view_gist: "Просмотреть Gist"
+    create:
+      database_error: "Ошибка базы данных"
 
   admin:
     categories:

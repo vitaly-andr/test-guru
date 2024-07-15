@@ -8,7 +8,15 @@ class GistsController < ApplicationController
     result = service.call
 
     if service.success?
-      Gist.create!(question: @test_passage.current_question, user: current_user, url: result)
+      begin
+        Gist.create!(question: @test_passage.current_question, user: current_user, url: result)
+        link = view_context.link_to(t('.view_gist'), result, target: '_blank')
+        flash_message = t('.success', link: link)
+        flash[:notice] = flash_message
+      rescue ActiveRecord::RecordInvalid => e
+        flash_message = t('.database_error', message: e.message)
+        flash[:alert] = flash_message
+      end
       link = view_context.link_to(t('.view_gist'), result, target: '_blank')
       flash_message = t('.success', link: link)
       flash[:notice] = flash_message
