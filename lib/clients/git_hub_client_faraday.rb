@@ -26,7 +26,7 @@ class GitHubClientFaraday
   end
   def parse_response(response)
     if response.status == 201
-      { success: true, html_url: JSON.parse(response.body)["html_url"] }
+      { success: true, html_url: JSON.parse(response.body)["url"] }
     else
       { success: false }
     end

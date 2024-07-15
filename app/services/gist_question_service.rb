@@ -6,7 +6,13 @@ class GistQuestionService
   end
 
   def call
-    @client.create_gist(gist_params)
+    @response = @client.create_gist(gist_params)
+    @success = @response[:success]
+    @html_url = @response[:html_url] if @success
+  end
+
+  def success?
+    @success
   end
 
   private

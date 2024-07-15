@@ -9,8 +9,13 @@ class GitHubClientOctokit
   end
 
   def create_gist(params)
-    response = @client.create_gist(params)
-    parse_response(response)
+    begin
+      response = @client.create_gist(params)
+      { success: true, html_url: response.url }
+    rescue Octokit::Error => e
+      puts "An error occurred: #{e.message}"
+      { success: false }
+    end
   end
 
   private
@@ -19,11 +24,4 @@ class GitHubClientOctokit
     Octokit::Client.new(access_token: @access_token)
   end
 
-  def parse_response(response)
-    if response.status == 201
-      { success: true, html_url: response.html_url }
-    else
-      { success: false }
-    end
-  end
 end
