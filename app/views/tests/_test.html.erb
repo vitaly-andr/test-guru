@@ -1,8 +1,8 @@
-<tr>
+<tr class="<%= row_class %>">
   <td> <%= test.title %></td>
   <td> <%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
   <td class="actions">
     <%= button_to t('tests.index.start'), start_test_path(test), data: { turbo_method: :post }, class: 'btn btn-sm btn-success' %>
   </td>
-<tr>
+</tr>
