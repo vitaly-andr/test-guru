@@ -1,4 +1,5 @@
-class Admin::GistsController < ApplicationController
+class Admin::GistsController < Admin::AdminController
+
   def index
     @gists = Gist.includes(:question, :user)
   #   Использование метода includes в ActiveRecord помогает устранить проблему N+1 запросов, когда для каждой строки

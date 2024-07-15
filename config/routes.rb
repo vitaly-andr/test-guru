@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
   namespace :admin do
-    get 'gists/index'
     resources :tests do
       resources :questions, shallow: true do
         resources :answers, shallow: true
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :categories
     resources :users
+    resources :gists, only: %i[index]
   end
 
   resources :tests, only: [:index] do
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   resources :test_passages, only: %i[show update] do
     member do
       get :result
-      post :gist
     end
   end
+  resources :gists, only: %i[create]
 
 end
