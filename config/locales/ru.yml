@@ -80,6 +80,8 @@ ru:
       success: "Gist успешно создан! %{link}"
       failure: "Не удалось создать Gist"
       view_gist: "Просмотреть Gist"
+    errors:
+      empty_answer_ids: "Выберите хотя бы один ответ"
   admin:
     categories:
       back_to_categories: "Назад к категориям"

@@ -80,6 +80,8 @@ en:
       success: "Gist created successfully! %{link}"
       failure: "Failed Gist creation"
       view_gist: "View Gist"
+    errors:
+      empty_answer_ids: "Choose at least one answer"
   admin:
     categories:
       back_to_categories: "Back to Categories"
