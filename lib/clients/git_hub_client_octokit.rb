@@ -1,6 +1,8 @@
 class GitHubClientOctokit
+  ACCESS_TOKEN = ENV['GITHUB_GIST_TOKEN']
+
   def initialize
-    @access_token = ENV['GITHUB_GIST_TOKEN']
+    @access_token = ACCESS_TOKEN
     raise 'Access token not found' if @access_token.nil?
 
     @client = setup_client
@@ -18,7 +20,7 @@ class GitHubClientOctokit
   end
 
   def parse_response(response)
-    if response.id
+    if response.status == 201
       { success: true, html_url: response.html_url }
     else
       { success: false }

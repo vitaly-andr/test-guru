@@ -1,8 +1,10 @@
 class GitHubClientFaraday
   ROOT_ENDPOINT = 'https://api.github.com'
+  ACCESS_TOKEN = ENV['GITHUB_GIST_TOKEN']
+
 
   def initialize
-    @access_token = ENV['GITHUB_GIST_TOKEN']
+    @access_token = ACCESS_TOKEN
     raise 'Access token not found' if @access_token.nil?
 
     @http_client = setup_http_client
