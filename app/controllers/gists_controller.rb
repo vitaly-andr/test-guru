@@ -1,5 +1,4 @@
 class GistsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[create]
 
   def create
@@ -7,22 +6,18 @@ class GistsController < ApplicationController
     service = GistQuestionService.new(@test_passage.current_question, client: client)
     result = service.call
 
-    if service.success?
+    result.when_success do
       begin
-        Gist.create!(question: @test_passage.current_question, user: current_user, url: result)
-        link = view_context.link_to(t('.view_gist'), result, target: '_blank')
-        flash_message = t('.success', link: link)
-        flash[:notice] = flash_message
+        Gist.create!(question: @test_passage.current_question, user: current_user, url: result.url)
+        link = view_context.link_to(t('.view_gist'), result.url, target: '_blank')
+        flash[:notice] = t('.success', link: link)
       rescue ActiveRecord::RecordInvalid => e
-        flash_message = t('.database_error', message: e.message)
-        flash[:alert] = flash_message
+        flash[:alert] = t('.database_error', message: e.message)
       end
-      link = view_context.link_to(t('.view_gist'), result, target: '_blank')
-      flash_message = t('.success', link: link)
-      flash[:notice] = flash_message
-    else
-      flash_message = t('.failure')
-      flash[:alert] = flash_message
+    end
+
+    result.when_error do |error_message|
+      flash[:alert] = t('.failure') + ": #{error_message}"
     end
 
     redirect_to @test_passage
