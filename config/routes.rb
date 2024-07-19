@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :categories
     resources :users
+    resources :gists, only: %i[index]
   end
 
   resources :tests, only: [:index] do
@@ -24,4 +25,6 @@ Rails.application.routes.draw do
       get :result
     end
   end
+  resources :gists, only: %i[create]
+
 end

@@ -37,6 +37,9 @@
                     <li>
                       <%= link_to t('layout.header.manage_users'), admin_users_path, class: "dropdown-item" %>
                     </li>
+                    <li>
+                      <%= link_to t('layout.header.manage_gists'), admin_gists_path, class: "dropdown-item" %>
+                    </li>
                   </ul>
                 </li>
               <% end %>
@@ -58,7 +61,7 @@
   </div>
 </header>
 <main class="container mt-4">
-  <%= flash_messages %>
+  <%= render 'shared/flash' %>
   <%= yield %>
 </main>
 

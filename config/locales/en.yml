@@ -14,6 +14,7 @@ en:
       welcome: "Welcome, %{name}"
       manage_categories: "Manage Categories"
       manage_users: "Manage Users"
+      manage_gists: "Review Gists"
     footer:
       copyright: "%{year} Vitaly Andrianov"
       github: "TestGuru - A simple test management application."
@@ -75,6 +76,14 @@ en:
     show:
       header: "Taking the test \"%{title}\""
       question_progress: "Question %{current_question_number} of %{total_questions}"
+    errors:
+      empty_answer_ids: "Choose at least one answer"
+  gists:
+    success: "Gist created successfully! %{link}"
+    failure: "Failed Gist creation"
+    view_gist: "View Gist"
+    create:
+      database_error: "Database error"
   admin:
     categories:
       back_to_categories: "Back to Categories"
@@ -122,6 +131,14 @@ en:
         correct_yes: "Yes"
         correct_no: "No"
         edit: "Edit"
+    gists:
+      index:
+        title: "List of Gists"
+        headers:
+          question: "Question"
+          url: "Gist URL"
+          user: "User"
+        no_gists: "No Gists created"
   shared:
     flash:
       created:

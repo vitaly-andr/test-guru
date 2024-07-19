@@ -29,7 +29,13 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+.odd {
+    background-color: #f9f9f9;
+}
 
+.even {
+    background-color: #ffffff;
+}
 .actions {
     display: flex;
     gap: 5px;

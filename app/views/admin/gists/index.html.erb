@@ -1,0 +1,26 @@
+<h1><%= t('.title') %></h1>
+
+<table class="shadow rounded">
+  <thead>
+  <tr>
+    <th><%= t('.headers.question') %></th>
+    <th><%= t('.headers.url') %></th>
+    <th><%= t('.headers.user') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @gists.any? %>
+    <% @gists.each do |gist| %>
+      <tr>
+        <td><%= link_to gist.question.body.truncate(25), admin_question_path(gist.question) %></td>
+        <td><%= link_to gist.url.split('/').last, gist.url, target: '_blank' %></td>
+        <td><%= gist.user.email %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="3"><%= t('.no_gists') %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -9,6 +9,8 @@
   </tr>
   </thead>
   <tbody>
-  <%= render @tests %>
+  <% @tests.each do |test| %>
+    <%= render partial: 'test', locals: { test: test, row_class: cycle('odd', 'even') } %>
+  <% end %>
   </tbody>
 </table>
