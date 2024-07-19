@@ -1,6 +1,6 @@
 <h2><%= t('.sign_up') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { data: { controller: "password-match" } }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
@@ -23,12 +23,13 @@
     <% if @minimum_password_length %>
       <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", data: { target: "password-match.password", action: "input->password-match#checkMatch" } %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, t('.password_confirmation') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", data: { target: "password-match.passwordConfirmation", action: "input->password-match#checkMatch" } %>
+    <span data-target="password-match.icon"></span>
   </div>
 
   <div class="actions">

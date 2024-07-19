@@ -7,5 +7,8 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PasswordMatchController from "./password_match_controller"
+application.register("password-match", PasswordMatchController)
+
 import SortController from "./sort_controller"
 application.register("sort", SortController)
