@@ -1,8 +1,8 @@
 <h1><%= t(".header") %></h1>
-<table class="shadow rounded">
+<table data-controller="sort" data-sort-target="sortable" class="shadow rounded">
   <thead>
   <tr>
-    <th><%= t(".title") %></th>
+    <th><a href="#" data-action="click->sort#sort" data-column="title" data-order="asc"><%= t(".title") %></a></th>
     <th><%= t(".level") %></th>
     <th><%= t(".questions_total") %></th>
     <th><%= t(".actions") %></th>
