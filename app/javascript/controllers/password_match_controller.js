@@ -13,7 +13,10 @@ export default class extends Controller {
 
     if (passwordConfirmation === "") {
       this.iconTarget.innerHTML = "";
-    } else if (password === passwordConfirmation) {
+      return; // Exit the function early
+    }
+
+    if (password === passwordConfirmation) {
       this.iconTarget.innerHTML = "✅";
       this.iconTarget.style.color = "green";
     } else {
