@@ -1,5 +1,5 @@
 class Admin::TestsController < Admin::AdminController
-  before_action :set_test, only: %i[show edit update destroy]
+  before_action :set_test, only: %i[show edit update destroy update_inline]
 
 
   def index
@@ -31,6 +31,15 @@ class Admin::TestsController < Admin::AdminController
       redirect_to admin_tests_path, notice: t('helpers.submit.test.update')
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def update_inline
+    if @test.update(test_params)
+      redirect_to admin_tests_path
+    else
+      @tests = Test.all
+      render :index, status: :unprocessable_entity
     end
   end
 
