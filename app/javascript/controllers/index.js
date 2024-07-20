@@ -10,5 +10,8 @@ application.register("hello", HelloController)
 import PasswordMatchController from "./password_match_controller"
 application.register("password-match", PasswordMatchController)
 
+import ProgressController from "./progress_controller"
+application.register("progress", ProgressController)
+
 import SortController from "./sort_controller"
 application.register("sort", SortController)

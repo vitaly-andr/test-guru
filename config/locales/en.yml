@@ -46,6 +46,7 @@ en:
       test:
         create: "Create Test"
         update: "Update Test"
+        update_inline: "Edit"
       question:
         create: "Create Question"
         update: "Update Question"

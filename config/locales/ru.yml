@@ -46,6 +46,7 @@ ru:
       test:
         create: "Создать Тест"
         update: "Обновить Тест"
+        update_inline: "Редактировать"
       question:
         create: "Создать Вопрос"
         update: "Обновить Вопрос"
