@@ -9,6 +9,13 @@ development:
   password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
 
+production_local:
+  <<: *default
+  database: test_guru_production_local
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: localhost
+
 test:
   <<: *default
   database: test_guru_test

@@ -34,3 +34,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+Чтобы запустить production локально
+RAILS_ENV=production_local ./bin/render-build.sh

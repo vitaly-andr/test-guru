@@ -2,10 +2,10 @@
 #
 # Table name: answers
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  body        :text             not null
 #  correct     :boolean          default(FALSE)
-#  question_id :integer          not null
+#  question_id :bigint           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

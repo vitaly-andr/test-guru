@@ -2,10 +2,10 @@
 #
 # Table name: tests
 #
-#  id          :integer          not null, primary key
+#  id          :bigint           not null, primary key
 #  title       :string           not null
 #  level       :integer          default(0)
-#  category_id :integer
+#  category_id :bigint
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :integer          not null
