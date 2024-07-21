@@ -11,7 +11,7 @@ services:
           name: test_guru_database
           property: connectionString
       - key: RAILS_MASTER_KEY
-        sync: true
+        value: ${RAILS_MASTER_KEY}
       - key: RAILS_ENV
         value: production
 
