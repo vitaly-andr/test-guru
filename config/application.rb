@@ -5,8 +5,9 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Dotenv::Rails.load
-
+if Rails.env.development? || Rails.env.test?
+  Dotenv::Rails.load
+end
 module TestGuru
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
