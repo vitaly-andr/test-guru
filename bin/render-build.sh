@@ -6,10 +6,11 @@ set -o errexit
 bundle install
 
 # Precompile assets with trace
-bundle exec rake assets:precompile --trace
+bundle exec rake assets:precompile
 
 # Clean assets with trace
-bundle exec rake assets:clean --trace
+bundle exec rake assets:clean
 
-## Migrate the database with trace (ensure this step is included)
-#bundle exec rake db:migrate --trace
+bundle exec rake db:reset
+
+
