@@ -16,6 +16,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pg'
 gem 'faraday-retry'
 gem 'faraday-multipart'
+gem 'mini_racer'
 
 
 
