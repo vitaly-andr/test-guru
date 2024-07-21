@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
-# exit on error
+# Exit on error
 set -o errexit
 
+# Install dependencies
 bundle install
-bundle exec rails assets:precompile
-bundle exec rails assets:clean
+
+# Precompile assets with trace
+bundle exec rake assets:precompile --trace
+
+# Clean assets with trace
+bundle exec rake assets:clean --trace
+
+## Migrate the database with trace (ensure this step is included)
+#bundle exec rake db:migrate --trace
