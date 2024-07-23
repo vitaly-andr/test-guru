@@ -189,3 +189,5 @@ en:
         restrict_dependent_destroy:
           one: "Cannot delete record because a dependent %{record} exists"
           many: "Cannot delete record because dependent %{record} exist"
+  feedbacks:
+    thank_you: "Thank you for feedback. It was successfully send"
