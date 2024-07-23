@@ -3,7 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << 'test-guru.andrianoff.online'
-  config.hosts << 'test-guru-anr9.onrender.com'
+  config.hosts << 'test-guru-1mrh.onrender.com'
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
