@@ -17,6 +17,7 @@ gem 'pg'
 gem 'faraday-retry'
 gem 'faraday-multipart'
 gem 'mini_racer'
+gem 'postmark-rails'
 
 
 

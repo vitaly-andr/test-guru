@@ -74,6 +74,10 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "test_guru_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'dev.andrianoff.online'}
+  config.action_mailer.default_options = {from: 'Test-Guru <noreply@andrianoff.online>'}
+
+  config.hosts << "dev.andrianoff.online"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
