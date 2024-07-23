@@ -2,16 +2,16 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "controllers/application"
 
-import HelloController from "./hello_controller"
+import HelloController from "controllers/hello_controller"
 application.register("hello", HelloController)
 
-import PasswordMatchController from "./password_match_controller"
+import PasswordMatchController from "controllers/password_match_controller"
 application.register("password-match", PasswordMatchController)
 
-import ProgressController from "./progress_controller"
+import ProgressController from "controllers/progress_controller"
 application.register("progress", ProgressController)
 
-import SortController from "./sort_controller"
+import SortController from "controllers/sort_controller"
 application.register("sort", SortController)
