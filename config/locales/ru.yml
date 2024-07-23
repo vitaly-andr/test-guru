@@ -202,3 +202,7 @@ ru:
       email: "Email"
       message: "Сообщение"
       submit: "Отправить"
+  feedback_mailer:
+    received_message: ""
+    from: ""
+    subject: ""
