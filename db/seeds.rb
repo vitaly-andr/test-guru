@@ -49,7 +49,6 @@ User.create!(
   email: 'alice@example.com',
   password: 'password1',
   password_confirmation: 'password1',
-  admin: true,
   confirmed_at: Time.now,
   confirmation_sent_at: Time.now
 )
@@ -70,6 +69,17 @@ User.create!(
   email: 'charlie@example.com',
   password: 'password3',
   password_confirmation: 'password3',
+  confirmed_at: Time.now,
+  confirmation_sent_at: Time.now
+)
+
+User.create!(
+  first_name: 'Vitaly',
+  last_name: 'Andrianov',
+  email: 'vitaly.andr+test@gmail.com',
+  password: '111111',
+  password_confirmation: '111111',
+  admin: true,
   confirmed_at: Time.now,
   confirmation_sent_at: Time.now
 )
