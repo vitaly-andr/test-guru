@@ -13,8 +13,8 @@ function db_exists() {
   bundle exec rails db:exists
   return $? # Capture the exit status of the rake task
 }
-DISABLE_DATABASE_ENVIRONMENT_CHECK=1
-rails db:reset
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:reset
+
 # Check if the database exists
 #if db_exists; then
 #  echo "Database exists. Running migrations..."
