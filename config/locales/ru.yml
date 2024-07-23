@@ -15,6 +15,7 @@ ru:
       manage_categories: "Управление категориями"
       manage_users: "Управление пользователями"
       manage_gists: "Просмотр Gist'ов"
+      feedback: "Оставить отзыв"
     footer:
       copyright: "%{year} Виталий Андрианов"
       github: "TestGuru - Простое приложение для управления тестами."
@@ -194,3 +195,10 @@ ru:
           many: "Невозможно удалить запись, так как существуют зависимые %{record}"
   feedbacks:
     thank_you: "Спасибо ваше мнение очень важно для нас"
+    new:
+      title: "Отзыв"
+    form:
+      name: "Имя"
+      email: "Email"
+      message: "Сообщение"
+      submit: "Отправить"

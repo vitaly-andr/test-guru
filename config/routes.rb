@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     end
   end
   resources :gists, only: %i[create]
+  resources :feedbacks, only: [:new, :create]
+
 
 end

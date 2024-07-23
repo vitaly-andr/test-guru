@@ -15,6 +15,7 @@ en:
       manage_categories: "Manage Categories"
       manage_users: "Manage Users"
       manage_gists: "Review Gists"
+      feedback: "Send feedback"
     footer:
       copyright: "%{year} Vitaly Andrianov"
       github: "TestGuru - A simple test management application."
@@ -191,3 +192,10 @@ en:
           many: "Cannot delete record because dependent %{record} exist"
   feedbacks:
     thank_you: "Thank you for feedback. It was successfully send"
+    new:
+      title: "Feedback"
+    form:
+      name: "Name"
+      email: "Email"
+      message: "Message"
+      submit: "Submit"
