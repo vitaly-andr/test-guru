@@ -20,7 +20,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_175952) do
     t.integer "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["body"], name: "index_answers_on_body"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
@@ -39,8 +38,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_175952) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,7 +52,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_175952) do
     t.integer "test_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["body"], name: "index_questions_on_body"
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
@@ -77,8 +75,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_175952) do
     t.datetime "updated_at", null: false
     t.integer "author_id", null: false
     t.index ["category_id"], name: "index_tests_on_category_id"
-    t.index ["level"], name: "index_tests_on_level"
-    t.index ["title"], name: "index_tests_on_title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,8 +94,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_23_175952) do
     t.string "last_name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["first_name"], name: "index_users_on_first_name"
-    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

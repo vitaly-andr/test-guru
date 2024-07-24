@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  title       :string           not null
 #  level       :integer          default(0)
-#  category_id :bigint
+#  category_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :integer          not null
