@@ -12,7 +12,7 @@
 #
 class TestPassage < ApplicationRecord
   belongs_to :user
-  belongs_to :test
+  belongs_to :test, optional: true
   belongs_to :current_question, class_name: 'Question', optional: true
   before_save :set_question
 
