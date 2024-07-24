@@ -109,6 +109,7 @@ ru:
         actions: "Действия"
         new_test: "Новый Тест"
         categories: "Категории"
+      published: "Опубликован?"
     questions:
       for_test: "для теста \"%{test}\""
       index:
@@ -216,6 +217,11 @@ ru:
       message: "Сообщение"
       submit: "Отправить"
   feedback_mailer:
-    received_message: ""
-    from: ""
-    subject: ""
+    received_message: "Получено сообщение"
+    from: "От"
+    subject: "Тема"
+  errors:
+    messages:
+      no_questions: "Нельзя опубликовать тест без вопросов"
+      invalid_answers_count: "У вопроса должно быть четыре варианта ответа"
+      no_correct_answers: "Как минимум один ответ должен быть правильным"

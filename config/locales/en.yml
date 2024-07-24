@@ -108,6 +108,7 @@ en:
         actions: "Actions"
         new_test: "New Test"
         categories: "Categories"
+      published: "Published?"
     questions:
       for_test: "for the test \"%{test}\""
       index:
@@ -223,3 +224,11 @@ en:
     received_message: "received_message"
     from: "from"
     subject: "subject"
+  errors:
+    messages:
+      no_questions: "You can not publish test without questions"
+      invalid_answers_count: "Each question should have 4 answers"
+      no_correct_answers: "At least one answer should be correct"
+    received_message: "Message received"
+    from: "From"
+    subject: "Subject"
