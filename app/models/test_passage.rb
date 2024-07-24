@@ -16,6 +16,9 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
   before_save :set_question
 
+  validate :test_has_questions, on: :create
+
+
   SUCCESS_CRITERIA = 85
   def completed?
     current_question.nil?
@@ -64,6 +67,10 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def test_has_questions
+    errors.add(:test, 'must have questions to start the test') if test.questions.empty?
   end
 
 end
