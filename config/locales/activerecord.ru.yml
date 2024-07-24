@@ -44,4 +44,13 @@ ru:
         invalid: "неверный"
         not_an_integer: "должно быть целым числом"
         record_invalid: "Запись содержит ошибки: %{errors}"
+  admin:
+    users:
+      show:
+        header: ""
+        back_to_users: ""
+      new:
+        header: ""
+      edit:
+        header: ""
 

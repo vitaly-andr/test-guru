@@ -1,0 +1,16 @@
+<h1><%= t('.header') %></h1>
+<table data-controller="sort" data-sort-target="sortable" class="shadow rounded">
+  <thead>
+  <tr>
+    <th><a href="#" data-action="click->sort#sort" data-column="email" data-order="asc"><%= t('.email') %></a></th>
+    <th><%= t('.admin') %></th>
+    <th><%= t('.actions') %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <%= render partial: 'user', locals: { user: user, row_class: cycle('odd', 'even') } %>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to t('.new_user'), new_admin_user_path, class: "btn btn-success" %>

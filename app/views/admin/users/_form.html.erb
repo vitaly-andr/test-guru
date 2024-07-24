@@ -1,0 +1,46 @@
+<%= form_with(model: [:admin, user], local: true) do |form| %>
+  <%= render 'shared/errors', resource: user %>
+
+  <div class="field">
+    <%= form.label :first_name, t('devise.registrations.new.first_name') %><br />
+    <%= form.text_field :first_name, autofocus: true, autocomplete: "given-name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name, t('devise.registrations.new.last_name') %><br />
+    <%= form.text_field :last_name, autocomplete: "family-name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, t('devise.registrations.new.email') %><br />
+    <%= form.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, t('devise.registrations.new.password') %>
+    <% if @minimum_password_length %>
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password", data: { target: "password-match.password", action: "input->password-match#checkMatch" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, t('devise.registrations.new.password_confirmation') %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", data: { target: "password-match.passwordConfirmation", action: "input->password-match#checkMatch" } %>
+    <span data-target="password-match.icon"></span>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin %>
+    <%= form.check_box :admin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :skip_confirmation %>
+    <%= form.check_box :skip_confirmation, {}, true, false %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

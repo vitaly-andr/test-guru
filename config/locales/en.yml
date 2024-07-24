@@ -141,6 +141,24 @@ en:
           url: "Gist URL"
           user: "User"
         no_gists: "No Gists created"
+    users:
+      index:
+        header: "Users list"
+        admin: "admin?"
+        actions: "actions"
+        email: "email"
+        show: "show"
+        edit: "edit"
+        destroy: ""
+        confirm: ""
+        new_user: "new user"
+      show:
+        header: "User"
+        back_to_users: "back to users"
+      new:
+        header: "Create user"
+      edit:
+        header: "Show user"
   shared:
     flash:
       created:
@@ -148,11 +166,13 @@ en:
         question: "Question was successfully created."
         answer: "Answer was successfully created."
         category: "Category was successfully created."
+        user: "User successfully created"
       updated:
         test: "Test was successfully updated."
         question: "Question was successfully updated."
         answer: "Answer was successfully updated."
         category: "Category was successfully updated."
+        user: "User successfully updated"
       deleted:
         test: "Test was successfully deleted."
         question: "Question was successfully deleted."
@@ -200,6 +220,6 @@ en:
       message: "Message"
       submit: "Submit"
   feedback_mailer:
-    received_message: ""
-    from: ""
-    subject: ""
+    received_message: "received_message"
+    from: "from"
+    subject: "subject"

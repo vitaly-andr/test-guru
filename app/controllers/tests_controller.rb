@@ -9,7 +9,14 @@ class TestsController < ApplicationController
 
   def start
     current_user.tests.push(@test)
+    # current_user.tests.push(@test) добавляет тест к пользователю.
+    # Это вызывает создание TestPassage через ассоциацию has_many :through.
+
     redirect_to current_user.test_passage(@test)
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:error] = e.record.errors.full_messages.join(", ")
+    redirect_to tests_path
+
   end
 
   private
