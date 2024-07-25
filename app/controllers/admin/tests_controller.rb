@@ -17,7 +17,7 @@ class Admin::TestsController < Admin::AdminController
   def create
     @test = current_user.authored_tests.new(test_params)
     if @test.save
-      redirect_to admin_tests_path, notice: t('helpers.submit.test.create')
+      redirect_to admin_tests_path, notice: t('shared.flash.created.test')
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,16 +28,18 @@ class Admin::TestsController < Admin::AdminController
 
   def update
     if @test.update(test_params)
-      redirect_to admin_tests_path, notice: t('helpers.submit.test.update')
+      redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
     else
+      flash[:error] = @test.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
     end
   end
 
   def update_inline
     if @test.update(test_params)
-      redirect_to admin_tests_path
+      redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
     else
+      flash[:error] = @test.errors.full_messages.join(", ")
       @tests = Test.all
       render :index, status: :unprocessable_entity
     end
@@ -55,7 +57,7 @@ class Admin::TestsController < Admin::AdminController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id)
+    params.require(:test).permit(:title, :level, :category_id, :published, :author_id)
   end
 
 end

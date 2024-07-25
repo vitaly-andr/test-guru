@@ -26,6 +26,11 @@
         <%= form.collection_select :author_id, User.all, :id, :full_name, {}, { class: "form-control" } %>
       </div>
 
+      <div class="field">
+        <%= form.check_box :published %>
+        <%= form.label :published, class: "form-label" %>
+      </div>
+
       <div class="form-group mt-3">
         <%= form.submit class: "btn btn-primary" %>
       </div>

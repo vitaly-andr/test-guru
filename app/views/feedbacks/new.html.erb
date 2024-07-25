@@ -1,0 +1,17 @@
+<h1><%= t('feedbacks.new.title') %></h1>
+
+<%= form_with model: @feedback, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :name, t('feedbacks.form.name') %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :email, t('feedbacks.form.email') %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :message, t('feedbacks.form.message') %>
+    <%= f.text_area :message, class: "form-control" %>
+  </div>
+  <%= f.submit t('feedbacks.form.submit'), class: "btn btn-primary" %>
+<% end %>

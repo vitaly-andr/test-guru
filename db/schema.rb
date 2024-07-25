@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_14_173535) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_24_142056) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
     t.boolean "correct", default: false
@@ -26,9 +29,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_173535) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "question_id", null: false
+    t.bigint "user_id", null: false
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +74,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_173535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id", null: false
+    t.boolean "published"
     t.index ["category_id"], name: "index_tests_on_category_id"
   end
 

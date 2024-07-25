@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint           not null, primary key
 #  first_name             :string           not null
 #  email                  :string           default(""), not null
 #  created_at             :datetime         not null
@@ -37,6 +37,7 @@ class User < ApplicationRecord
 
   # validates :name, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :password, presence: true, confirmation: true, length: { within: 6..128 }, if: :password_required?
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test_id: test.id)
@@ -44,6 +45,11 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+  def password_required?
+    new_record? || password.present?
   end
 end
 # User model

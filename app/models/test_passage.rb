@@ -2,7 +2,7 @@
 #
 # Table name: test_passages
 #
-#  id                  :integer          not null, primary key
+#  id                  :bigint           not null, primary key
 #  user_id             :integer          not null
 #  test_id             :integer          not null
 #  current_question_id :integer
@@ -12,9 +12,12 @@
 #
 class TestPassage < ApplicationRecord
   belongs_to :user
-  belongs_to :test
+  belongs_to :test, optional: true
   belongs_to :current_question, class_name: 'Question', optional: true
   before_save :set_question
+
+  validate :test_has_questions, on: :create
+
 
   SUCCESS_CRITERIA = 85
   def completed?
@@ -64,6 +67,10 @@ class TestPassage < ApplicationRecord
 
   def next_question
     test.questions.order(:id).where('id > ?', current_question.id).first
+  end
+
+  def test_has_questions
+    errors.add(:test, 'must have questions to start the test') if test.questions.empty?
   end
 
 end

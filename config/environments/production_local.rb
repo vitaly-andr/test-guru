@@ -2,8 +2,8 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << 'test-guru.andrianoff.online'
-  config.hosts << 'test-guru-1mrh.onrender.com'
+  config.hosts << 'localhost'
+  config.hosts << '0.0.0.0'
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
@@ -51,12 +51,12 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
-    .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
-    .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+                                       .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+                                       .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -74,10 +74,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "test_guru_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'dev.andrianoff.online'}
-  config.action_mailer.default_options = {from: 'Test-Guru <noreply@andrianoff.online>'}
-
-  config.hosts << "dev.andrianoff.online"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

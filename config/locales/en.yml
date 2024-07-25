@@ -15,6 +15,7 @@ en:
       manage_categories: "Manage Categories"
       manage_users: "Manage Users"
       manage_gists: "Review Gists"
+      feedback: "Send feedback"
     footer:
       copyright: "%{year} Vitaly Andrianov"
       github: "TestGuru - A simple test management application."
@@ -107,6 +108,7 @@ en:
         actions: "Actions"
         new_test: "New Test"
         categories: "Categories"
+      published: "Published?"
     questions:
       for_test: "for the test \"%{test}\""
       index:
@@ -140,6 +142,24 @@ en:
           url: "Gist URL"
           user: "User"
         no_gists: "No Gists created"
+    users:
+      index:
+        header: "Users list"
+        admin: "admin?"
+        actions: "actions"
+        email: "email"
+        show: "show"
+        edit: "edit"
+        destroy: ""
+        confirm: ""
+        new_user: "new user"
+      show:
+        header: "User"
+        back_to_users: "back to users"
+      new:
+        header: "Create user"
+      edit:
+        header: "Show user"
   shared:
     flash:
       created:
@@ -147,11 +167,13 @@ en:
         question: "Question was successfully created."
         answer: "Answer was successfully created."
         category: "Category was successfully created."
+        user: "User successfully created"
       updated:
         test: "Test was successfully updated."
         question: "Question was successfully updated."
         answer: "Answer was successfully updated."
         category: "Category was successfully updated."
+        user: "User successfully updated"
       deleted:
         test: "Test was successfully deleted."
         question: "Question was successfully deleted."
@@ -189,3 +211,24 @@ en:
         restrict_dependent_destroy:
           one: "Cannot delete record because a dependent %{record} exists"
           many: "Cannot delete record because dependent %{record} exist"
+  feedbacks:
+    thank_you: "Thank you for feedback. It was successfully send"
+    new:
+      title: "Feedback"
+    form:
+      name: "Name"
+      email: "Email"
+      message: "Message"
+      submit: "Submit"
+  feedback_mailer:
+    received_message: "received_message"
+    from: "from"
+    subject: "subject"
+  errors:
+    messages:
+      no_questions: "You can not publish test without questions"
+      invalid_answers_count: "Each question should have 4 answers"
+      no_correct_answers: "At least one answer should be correct"
+    received_message: "Message received"
+    from: "From"
+    subject: "Subject"

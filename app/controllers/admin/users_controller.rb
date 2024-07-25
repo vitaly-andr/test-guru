@@ -12,25 +12,41 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.skip_confirmation!
-    if @user.save
-      redirect_to admin_users_path, notice: 'User was successfully created.'
-    else
-      render :new
+    user_params_without_confirmation = user_params.except(:skip_confirmation)
+    @user = User.new(user_params_without_confirmation)
+
+    if params[:user][:skip_confirmation] == '1'
+      @user.skip_confirmation_notification!
+      @user.confirmed_at = Time.current
     end
+
+    if @user.save
+      redirect_to admin_users_path, notice: t('shared.flash.created.user')
+    else
+      render :new, status: :unprocessable_entity
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    flash[:error] = e.record.errors.full_messages.join(", ")
+    render :new, status: :unprocessable_entity
   end
 
   def edit
     @user = User.find(params[:id])
   end
 
+
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to admin_users_path, notice: 'User was successfully updated.'
+
+    user_params_without_password = user_params
+    user_params_without_password.delete(:password) if user_params[:password].blank?
+    user_params_without_password.delete(:password_confirmation) if user_params[:password_confirmation].blank?
+
+    if @user.update(user_params_without_password)
+      redirect_to admin_users_path, notice: t('shared.flash.updated.user')
     else
-      render :edit
+      flash[:error] = @user.errors.full_messages.join(", ")
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -43,6 +59,6 @@ class Admin::UsersController < Admin::AdminController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin, :skip_confirmation)
   end
 end

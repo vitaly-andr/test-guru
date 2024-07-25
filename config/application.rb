@@ -5,8 +5,9 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Dotenv::Rails.load
-
+if Rails.env.development? || Rails.env.test?
+  Dotenv::Rails.load
+end
 module TestGuru
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -20,6 +21,15 @@ module TestGuru
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    config.action_mailer.delivery_method = :postmark
+
+    config.action_mailer.postmark_settings = {
+      api_token: ENV['POSTMARK_API_TOKEN']
+    }
+    config.action_mailer.default_url_options = { host: 'dev.andrianoff.online'}
+    config.action_mailer.default_options = {from: 'WorkflowAPP <noreply@andrianoff.online>'}
+
+    config.hosts << "dev.andrianoff.online"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

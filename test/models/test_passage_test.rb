@@ -2,7 +2,7 @@
 #
 # Table name: test_passages
 #
-#  id                  :integer          not null, primary key
+#  id                  :bigint           not null, primary key
 #  user_id             :integer          not null
 #  test_id             :integer          not null
 #  current_question_id :integer

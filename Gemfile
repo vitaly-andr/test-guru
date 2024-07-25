@@ -13,13 +13,19 @@ gem "sassc-rails"
 gem 'faraday'
 gem 'octokit'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'pg'
+gem 'faraday-retry'
+gem 'faraday-multipart'
+gem 'mini_racer'
+gem 'postmark-rails'
+
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+# gem 'sqlite3', '~> 1.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
