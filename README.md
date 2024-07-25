@@ -51,6 +51,9 @@ def pin_all_relative(dir_name)
 end
 
 pin_all_relative "controllers"
+
+<img width="353" alt="image" src="https://github.com/user-attachments/assets/97890c79-152b-4e9f-b23f-74a2261c796c">
+
 # etc
 
 То есть можно попробовать вообще не использовать относительный импорт с точками
