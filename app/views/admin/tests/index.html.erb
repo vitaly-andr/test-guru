@@ -1,20 +1,19 @@
 <h1><%= t('.header') %></h1>
 
-<table class="shadow rounded">
-  <thead>
+<div class="container">
   <%= render 'shared/errors', resource: @test %>
-  <tr>
-    <th><%= t('.title') %></th>
-    <th><%= t('.level') %></th>
-    <th><%= t('.questions_total') %></th>
-    <th><%= t('.author') %></th>
-    <th><%= t('.actions') %></th>
-  </tr>
-  </thead>
-  <tbody>
+
+  <div class="row font-weight-bold">
+    <div class="col p-2"><%= t('.title') %></div>
+    <div class="col p-2"><%= t('.level') %></div>
+    <div class="col p-2"><%= t('.questions_total') %></div>
+    <div class="col p-2"><%= t('.author') %></div>
+    <div class="col p-2"><%= t('.actions') %></div>
+  </div>
+
   <%= render @tests %>
-  </tbody>
-</table>
+</div>
+
 <p class="mt-3">
   <%= link_to t('.new_test'), new_admin_test_path, class: "btn btn-secondary" %>
 </p>
