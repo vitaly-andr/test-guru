@@ -1,4 +1,42 @@
-<%= form_with model: [:admin, test], url: update_inline_admin_test_path(test), local: true, class: 'form-inline' do |form| %>
-  <%= form.text_field :title, class: 'form-control mr-2' %>
-  <%= form.submit t('helpers.submit.test.update_inline'), class: 'btn btn-primary' %>
+<%= turbo_frame_tag(dom_id(test)) do %>
+
+  <%= form_with model: [:admin, @test], local: true do |form| %>
+    <div class="card shadow">
+      <div class="card-header">
+        <h1><%= form_header(@test) %></h1>
+      </div>
+      <div class="card-body">
+        <%= render 'shared/errors', resource: @test %>
+
+        <div class="form-group">
+          <%= form.label :title, class: "form-label" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :level, class: "form-label" %>
+          <%= form.number_field :level, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :category_id, class: "form-label" %>
+          <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: t('helpers.prompt.category') }, { class: "form-control" } %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :author_id, class: "form-label" %>
+          <%= form.collection_select :author_id, User.all, :id, :full_name, {}, { class: "form-control" } %>
+        </div>
+
+        <div class="field">
+          <%= form.check_box :published %>
+          <%= form.label :published, class: "form-label" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= form.submit class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
