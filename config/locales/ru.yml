@@ -67,6 +67,7 @@ ru:
       level: "Уровень"
       questions_total: "Кол-во вопросов"
       actions: "Действия"
+      category: "Категория"
   test_passages:
     helper:
       success_message: "Поздравляем! Вы прошли тест с результатом %{success_percentage}%!"
