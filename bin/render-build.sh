@@ -2,6 +2,9 @@
 # Exit on error
 set -o errexit
 
+sudo apt-get update
+sudo apt-get install -y libvips-dev
+
 bundle install
 
 bundle exec rake assets:precompile

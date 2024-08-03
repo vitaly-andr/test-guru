@@ -1,0 +1,22 @@
+<!-- app/views/admin/badges/index.html.erb -->
+<h1><%= t('admin.badges.index.title') %></h1>
+
+<div class="container">
+  <% if @badges.any? %>
+    <div class="row font-weight-bold">
+      <div class="col p-2"><%= t('admin.badges.form.title') %></div>
+      <div class="col p-2"><%= t('admin.badges.form.image') %></div>
+      <div class="col p-2"><%= t('admin.badges.form.rule') %></div>
+      <div class="col p-2"><%= t('admin.badges.form.rule_value') %></div>
+      <div class="col p-2"><%= t('shared.actions.actions') %></div>
+    </div>
+
+    <%= render @badges %>
+  <% else %>
+    <p><%= t('admin.badges.index.no_badges') %></p>
+  <% end %>
+</div>
+
+<p class="mt-3">
+  <%= link_to t('admin.badges.index.new_badge'), new_admin_badge_path, class: "btn btn-secondary" %>
+</p>

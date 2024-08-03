@@ -16,6 +16,8 @@ ru:
       manage_users: "Управление пользователями"
       manage_gists: "Просмотр Gist'ов"
       feedback: "Оставить отзыв"
+      badges: "Список бейджей"
+      manage_badges: "Управление бейджами"
     footer:
       copyright: "%{year} Виталий Андрианов"
       github: "TestGuru - Простое приложение для управления тестами."
@@ -76,11 +78,19 @@ ru:
       header: "Тест %{title} завершен!"
       subheader: "Результат теста"
       all_tests: "Все тесты"
+      no_badges_awarded: "Пока нет бейджей"
+      no_image: "Нет картинки"
+      awarded_badges: "Присвоенные бейджи"
     show:
       header: "Прохождение теста \"%{title}\""
       question_progress: "Вопрос %{current_question_number} из %{total_questions}"
     errors:
       empty_answer_ids: "Выберите хотя бы один ответ"
+    update:
+      badge_awarded: "Выдан бейдж"
+      confirm_badge: "Необходимо подтвердить ваш ранг"
+      new_tests_to_complete: "Новые тесты"
+      unknown_badge_state: "Не известный статус бейджа"
   gists:
     success: "Gist успешно создан! %{link}"
     failure: "Не удалось создать Gist"
@@ -155,6 +165,22 @@ ru:
         edit: "Редактировать"
         destroy: "Удалить"
         confirm: "Вы уверены?"
+    badges:
+      created: "Бейдж создан"
+      updated: "Бейдж обновлен"
+      deleted: "Бейдж удален"
+      form:
+        title: "Название"
+        image: "Картинка"
+        rule: "Правило"
+        rule_value: "Значение"
+        description: "Описание"
+      index:
+        new_badge: "Новый бейдж"
+        title: "Название"
+      new_title: "Создать бейдж"
+      edit_title: "Редактировать бейдж"
+      no_image: "Нет картинки"
   shared:
     flash:
       created:
@@ -178,6 +204,11 @@ ru:
       edit: "Редактировать"
       delete: "Удалить"
       confirm_delete: "Вы уверены?"
+      actions: "Действия"
+      save: "Сохранить"
+      back: "Назад"
+      create: "Создать"
+      update: "Обновить"
     errors:
       header:
         one: "%{count} ошибка не позволила сохранить %{resource}:"
@@ -226,3 +257,8 @@ ru:
       no_questions: "Нельзя опубликовать тест без вопросов"
       invalid_answers_count: "У вопроса должно быть четыре варианта ответа"
       no_correct_answers: "Как минимум один ответ должен быть правильным"
+  badges:
+    index:
+      title: ""
+    no_badges_available: ""
+    no_image: ""

@@ -1,0 +1,15 @@
+<div class="col-md-4 mb-3">
+  <div class="card h-100">
+    <div class="card-header text-center">
+      <%= badge.title %>
+      <p class="text-muted mt-1"><%= badge.description %></p>
+    </div>
+    <div class="card-body text-center">
+      <% if badge.image.attached? %>
+        <%= image_tag badge.image, alt: badge.title, class: 'img-fluid' %>
+      <% else %>
+        <span class="text-muted"><%= t('badges.no_image') %></span>
+      <% end %>
+    </div>
+  </div>
+</div>

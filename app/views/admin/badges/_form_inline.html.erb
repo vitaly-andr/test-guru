@@ -1,0 +1,41 @@
+<%= turbo_frame_tag(dom_id(badge, :edit)) do %>
+  <%= form_with model: [:admin, badge], local: true do |form| %>
+    <div class="card shadow mb-3">
+      <div class="card-header">
+        <h2><%= t('admin.badges.edit_title') %></h2>
+      </div>
+      <div class="card-body">
+        <%= render 'shared/errors', resource: badge %>
+
+        <div class="form-group">
+          <%= form.label :title, class: "form-label" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :description, class: "form-label" %>
+          <%= form.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :image, class: "form-label" %>
+          <%= form.file_field :image, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :rule, class: "form-label" %>
+          <%= form.select :rule, Badge.rules.keys.map { |r| [r.humanize, r] }, {}, { class: "form-control" } %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :rule_value, class: "form-label" %>
+          <%= form.text_field :rule_value, class: "form-control" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= form.submit t('shared.actions.save'), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

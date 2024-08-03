@@ -1,0 +1,11 @@
+<h1><%= t('badges.index.title') %></h1>
+
+<div class="container">
+  <% if @badges.any? %>
+    <div class="row">
+      <%= render @badges %>
+    </div>
+  <% else %>
+    <p><%= t('badges.no_badges_available') %></p>
+  <% end %>
+</div>

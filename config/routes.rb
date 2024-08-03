@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :categories
     resources :users
     resources :gists, only: %i[index]
+    resources :badges
+
   end
 
   resources :tests, only: [:index] do
@@ -27,6 +29,6 @@ Rails.application.routes.draw do
   end
   resources :gists, only: %i[create]
   resources :feedbacks, only: [:new, :create]
-
+  resources :badges, only: [:index]
 
 end

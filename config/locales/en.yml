@@ -16,6 +16,8 @@ en:
       manage_users: "Manage Users"
       manage_gists: "Review Gists"
       feedback: "Send feedback"
+      badges: "Available badges"
+      manage_badges: "Manage badges"
     footer:
       copyright: "%{year} Vitaly Andrianov"
       github: "TestGuru - A simple test management application."
@@ -67,7 +69,7 @@ en:
       level: "Level"
       questions_total: "Number of Questions"
       actions: "Actions"
-      category: ""
+      category: "Category"
   test_passages:
     helper:
       success_message: "Congratulations! You passed the test with a score of %{success_percentage}%!"
@@ -76,11 +78,19 @@ en:
       header: "Test %{title} completed!"
       subheader: "Test Result"
       all_tests: "All Tests"
+      no_badges_awarded: "No badges awarded"
+      no_image: "No image"
+      awarded_badges: "Awarded badges"
     show:
       header: "Taking the test \"%{title}\""
       question_progress: "Question %{current_question_number} of %{total_questions}"
     errors:
       empty_answer_ids: "Choose at least one answer"
+    update:
+      badge_awarded: "badge_awarded"
+      confirm_badge: "confirm_badge"
+      new_tests_to_complete: "new_tests_to_complete"
+      unknown_badge_state: "unknown_badge_state"
   gists:
     success: "Gist created successfully! %{link}"
     failure: "Failed Gist creation"
@@ -162,6 +172,23 @@ en:
         header: "Create user"
       edit:
         header: "Show user"
+    badges:
+      created: "Badge created"
+      updated: "Badge updated"
+      deleted: "Badge deleted"
+      form:
+        title: "title"
+        image: "image"
+        rule: "rule"
+        rule_value: "rule_value"
+        description: "Description"
+      index:
+        no_badges: "No badges"
+        new_badge: "New badge"
+        title: "Title"
+      new_title: "Create badge"
+      edit_title: "Edit badge"
+      no_image: "No image"
   shared:
     flash:
       created:
@@ -185,6 +212,11 @@ en:
       edit: "Edit"
       delete: "Delete"
       confirm_delete: "Are you sure?"
+      actions: "Actions"
+      save: "Save"
+      back: "Back"
+      create: "Create"
+      update: "Update"
     errors:
       header:
         one: "%{count} error prohibited this %{resource} from being saved:"
@@ -234,3 +266,8 @@ en:
     received_message: "Message received"
     from: "From"
     subject: "Subject"
+  badges:
+    index:
+      title: "Available badges"
+    no_badges_available: "No badges"
+    no_image: ""

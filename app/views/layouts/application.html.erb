@@ -42,6 +42,9 @@
                       <%= link_to t('layout.header.manage_users'), admin_users_path, class: "dropdown-item" %>
                     </li>
                     <li>
+                      <%= link_to t('layout.header.manage_badges'), admin_badges_path, class: "dropdown-item" %>
+                    </li>
+                    <li>
                       <%= link_to t('layout.header.manage_gists'), admin_gists_path, class: "dropdown-item" %>
                     </li>
                   </ul>
@@ -50,6 +53,9 @@
             </ul>
             <div class="d-flex align-items-end">
               <% if user_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to t('layout.header.badges'), badges_path, class: "nav-link" %>
+                </li>
               <span class="navbar-text me-3">
                 <%= t('layout.header.welcome', name: current_user.full_name) %>
               </span>
