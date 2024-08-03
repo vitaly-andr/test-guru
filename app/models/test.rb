@@ -10,6 +10,7 @@
 #  updated_at  :datetime         not null
 #  author_id   :integer          not null
 #  published   :boolean
+#  timer       :integer
 #
 class Test < ApplicationRecord
   belongs_to :category
@@ -22,6 +23,8 @@ class Test < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :level, message: "with this level already exists" }
   validates :level, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :author_id, presence: true
+  validates :timer, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+
   validate :validate_published, if: :published?
 
   scope :easy, -> { where(level: [0, 1]) }

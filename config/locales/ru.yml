@@ -78,6 +78,7 @@ ru:
     show:
       header: "Прохождение теста \"%{title}\""
       question_progress: "Вопрос %{current_question_number} из %{total_questions}"
+      time_left: "Осталось времени"
     errors:
       empty_answer_ids: "Выберите хотя бы один ответ"
   gists:
