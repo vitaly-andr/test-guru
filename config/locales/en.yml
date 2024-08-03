@@ -84,6 +84,7 @@ en:
     show:
       header: "Taking the test \"%{title}\""
       question_progress: "Question %{current_question_number} of %{total_questions}"
+      time_left: "Time left"
     errors:
       empty_answer_ids: "Choose at least one answer"
     update:

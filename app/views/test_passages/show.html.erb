@@ -9,6 +9,15 @@
           total_questions: @test_passage.total_questions) %>
   </p>
 
+  <% if @test_passage.test.timer %>
+    <div data-controller="timer"
+         data-timer-duration-value="<%= @test_passage.test.timer %>"
+         data-timer-redirect-url-value="<%= result_test_passage_path(@test_passage) %>">
+      <%= t('test_passages.show.time_left') %>:
+      <div data-timer-target="left"></div>
+    </div>
+  <% end %>
+
   <div class="progress mb-4">
     <div class="progress-bar" role="progressbar" style="width: 0; transition: none;" data-progress-target="bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
