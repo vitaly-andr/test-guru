@@ -12,13 +12,13 @@ class BadgeService
   end
 
   def new_tests_to_complete(badge)
-    category_tests_ids = Test.by_category_title(badge.rule_value).published.pluck(:id)
-
     last_badge_award_date = @user.user_badges.joins(:badge)
                                  .where(badges: { rule_value: badge.rule_value, id: badge.id })
                                  .maximum(:created_at)
-    Test.where(id: category_tests_ids)
-                          .where('created_at > ?', last_badge_award_date)
+
+    Test.by_category_title(badge.rule_value)
+        .published
+        .where('tests.created_at > ?', last_badge_award_date || Time.at(0))
   end
 
   private
@@ -47,13 +47,15 @@ class BadgeService
     # Нам не важно получить список всех тестов в категории,
     # а нужно только тесты в категории с момента выдачи беджа
     # или все если бэдж еще не выдавался
-    category_tests_ids = new_tests_to_complete(badge).pluck(:id)
+
+    category_tests = new_tests_to_complete(badge)
+    category_tests_ids = category_tests.pluck(:id)
     return false if category_tests_ids.empty?
 
     passed_tests_ids = @user.test_passages.passed.where(test_id: category_tests_ids).pluck(:test_id).uniq
     all_tests_completed = (category_tests_ids - passed_tests_ids).empty?
     badge_already_awarded = @user.user_badges.where(badge: badge).exists?
-    new_tests_exist = category_tests_ids.exists?
+    new_tests_exist = category_tests.exists?
 
     if all_tests_completed
       :award_badge
