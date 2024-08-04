@@ -10,6 +10,7 @@
 #  updated_at  :datetime         not null
 #  author_id   :integer          not null
 #  published   :boolean
+#  timer       :integer
 #
 class Test < ApplicationRecord
   belongs_to :category

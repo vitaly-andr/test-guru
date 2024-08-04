@@ -7,14 +7,18 @@ class BadgeService
 
   def call
     @badges.each do |badge|
-      award_badge(badge) if send("satisfies_#{badge.rule}?", badge.rule_value)
+      award_badge(badge) if send("satisfies_#{badge.rule}?", badge)
     end
   end
 
   def new_tests_to_complete(badge)
-    category = Category.find_by(title: badge.rule_value)
-    last_badge_award_date = @user.user_badges.where(badge: badge).maximum(:created_at)
-    category.tests.published.where('created_at > ?', last_badge_award_date)
+    category_tests_ids = Test.by_category_title(badge.rule_value).published.pluck(:id)
+
+    last_badge_award_date = @user.user_badges.joins(:badge)
+                                 .where(badges: { rule_value: badge.rule_value, id: badge.id })
+                                 .maximum(:created_at)
+    Test.where(id: category_tests_ids)
+                          .where('created_at > ?', last_badge_award_date)
   end
 
   private
@@ -40,18 +44,20 @@ class BadgeService
 
   # Правило: успешное прохождение всех тестов из категории
   def satisfies_complete_category?(badge)
-    category = Category.find_by(title: badge.rule_value)
-    return false unless category
+    # Нам не важно получить список всех тестов в категории,
+    # а нужно только тесты в категории с момента выдачи беджа
+    # или все если бэдж еще не выдавался
+    category_tests_ids = new_tests_to_complete(badge).pluck(:id)
+    return false if category_tests_ids.empty?
 
-    category_tests_ids = category.tests.published.pluck(:id)
     passed_tests_ids = @user.test_passages.passed.where(test_id: category_tests_ids).pluck(:test_id).uniq
     all_tests_completed = (category_tests_ids - passed_tests_ids).empty?
-    last_badge_award_date = @user.user_badges.where(badge: badge).maximum(:created_at)
-    new_tests_exist = category.tests.published.where('created_at > ?', last_badge_award_date).exists?
+    badge_already_awarded = @user.user_badges.where(badge: badge).exists?
+    new_tests_exist = category_tests_ids.exists?
 
     if all_tests_completed
       :award_badge
-    elsif last_badge_award_date && new_tests_exist
+    elsif badge_already_awarded && new_tests_exist
       :confirm_badge
     else
       false
