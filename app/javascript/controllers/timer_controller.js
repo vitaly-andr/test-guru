@@ -31,8 +31,8 @@ export default class extends Controller {
         } else {
             const minutes = Math.floor(timeLeft / 1000 / 60)
             const seconds = Math.floor((timeLeft / 1000) % 60)
-            // this.leftTarget.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-            this.leftTarget.textContent = `test`
+            this.leftTarget.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+            // this.leftTarget.textContent = `test`
         }
     }
 }
