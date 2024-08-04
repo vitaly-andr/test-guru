@@ -7,7 +7,8 @@ class BadgeService
 
   def call
     @badges.each do |badge|
-      award_badge(badge) if send("satisfies_#{badge.rule}?", badge)
+      method_name = "satisfies_#{badge.rule}?"
+      award_badge(badge) if respond_to?(method_name, true) && send(method_name, badge)
     end
   end
 
@@ -27,20 +28,6 @@ class BadgeService
     @user.user_badges.create(badge: badge)
   end
 
-  def satisfies_badge_condition?(badge)
-    case badge.rule
-    when 'Complete category'
-      satisfies_complete_category?(badge)
-    when 'First try'
-      satisfies_first_try?
-    when 'Complete level'
-      satisfies_complete_level?(badge)
-    when 'All tests passed'
-      satisfies_all_tests_passed?
-    else
-      false
-    end
-  end
 
   # Правило: успешное прохождение всех тестов из категории
   def satisfies_complete_category?(badge)
