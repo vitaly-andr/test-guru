@@ -27,9 +27,8 @@ class Admin::BadgesController < ApplicationController
     if @badge.update(badge_params)
       render(@badge)
     else
-      flash[:error] = @test.errors.full_messages.join(", ")
-      @badges = Badge.all
-      render :index, status: :unprocessable_entity
+      flash.now[:error] = @badge.errors.full_messages.join(", ")
+      render :edit, status: :unprocessable_entity
     end
   end
 

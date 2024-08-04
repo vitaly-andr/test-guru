@@ -19,6 +19,7 @@ class Admin::TestsController < Admin::AdminController
     if @test.save
       redirect_to admin_tests_path, notice: t('shared.flash.created.test')
     else
+      flash[:error] = @test.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -33,8 +34,7 @@ class Admin::TestsController < Admin::AdminController
       render(@test)
     else
       flash[:error] = @test.errors.full_messages.join(", ")
-      @tests = Test.all
-      render :index, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 

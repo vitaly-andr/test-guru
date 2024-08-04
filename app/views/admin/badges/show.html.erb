@@ -3,7 +3,7 @@
 <div class="badge-details">
   <p><strong><%= t('admin.badges.form.image') %>:</strong></p>
   <% if @badge.image.attached? %>
-    <%= image_tag @badge.image.variant(resize_to_limit: [300, 300]), alt: @badge.title, class: 'img-thumbnail' %>
+    <%= image_tag @badge.image, alt: @badge.title, class: 'img-fluid' %>
   <% else %>
     <p><%= t('admin.badges.no_image') %></p>
   <% end %>
