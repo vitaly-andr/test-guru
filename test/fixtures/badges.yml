@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: badges
+#
+#  id          :bigint           not null, primary key
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  rule        :integer          default("complete_category"), not null
+#  rule_value  :string
+#  description :text
+#
+
+one:
+  title: MyString
+  image: MyString
+
+two:
+  title: MyString
+  image: MyString

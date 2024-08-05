@@ -11,6 +11,8 @@ export default class extends Controller {
 
   connect() {
     this.updateProgressBar()
+    console.log('Progress controller connected')
+
   }
 
   updateProgressBar() {

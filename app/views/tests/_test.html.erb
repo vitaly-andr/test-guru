@@ -1,5 +1,6 @@
 <tr class="<%= row_class %>">
   <td data-column="title"><%= test.title %></td>
+  <td><%= test.category.title %></td>
   <td> <%= test_level(test) %></td>
   <td><%= test.questions.count %></td>
   <td class="actions">

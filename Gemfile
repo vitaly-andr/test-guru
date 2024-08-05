@@ -18,7 +18,7 @@ gem 'faraday-retry'
 gem 'faraday-multipart'
 gem 'mini_racer'
 gem 'postmark-rails'
-
+gem 'image_processing'
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

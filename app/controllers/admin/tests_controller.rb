@@ -1,5 +1,5 @@
 class Admin::TestsController < Admin::AdminController
-  before_action :set_test, only: %i[show edit update destroy update_inline]
+  before_action :set_test, only: %i[show edit update destroy]
 
 
   def index
@@ -19,6 +19,7 @@ class Admin::TestsController < Admin::AdminController
     if @test.save
       redirect_to admin_tests_path, notice: t('shared.flash.created.test')
     else
+      flash[:error] = @test.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,20 +29,12 @@ class Admin::TestsController < Admin::AdminController
 
   def update
     if @test.update(test_params)
-      redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
+      # redirect_to admin_test_path(@test), notice: t('shared.flash.updated.test')
+      # render partial: 'admin/tests/test', locals: { test: @test }, notice: t('shared.flash.updated.test')
+      render(@test)
     else
       flash[:error] = @test.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def update_inline
-    if @test.update(test_params)
-      redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
-    else
-      flash[:error] = @test.errors.full_messages.join(", ")
-      @tests = Test.all
-      render :index, status: :unprocessable_entity
     end
   end
 
@@ -57,7 +50,7 @@ class Admin::TestsController < Admin::AdminController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :published, :author_id)
+    params.require(:test).permit(:title, :level, :category_id, :published, :author_id, :timer)
   end
 
 end

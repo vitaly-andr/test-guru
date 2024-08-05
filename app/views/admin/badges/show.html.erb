@@ -1,0 +1,17 @@
+<h1><%= @badge.title %></h1>
+
+<div class="badge-details">
+  <p><strong><%= t('admin.badges.form.image') %>:</strong></p>
+  <% if @badge.image.attached? %>
+    <%= image_tag @badge.image, alt: @badge.title, class: 'img-fluid' %>
+  <% else %>
+    <p><%= t('admin.badges.no_image') %></p>
+  <% end %>
+
+  <p><strong><%= t('admin.badges.form.description') %>:</strong> <%= @badge.description %></p>
+  <p><strong><%= t('admin.badges.form.rule') %>:</strong> <%= @badge.rule.humanize %></p>
+  <p><strong><%= t('admin.badges.form.rule_value') %>:</strong> <%= @badge.rule_value %></p>
+</div>
+
+<%= link_to t('shared.actions.edit'), edit_admin_badge_path(@badge), class: 'btn btn-primary' %>
+<%= link_to t('shared.actions.back'), admin_badges_path, class: 'btn btn-secondary' %>
