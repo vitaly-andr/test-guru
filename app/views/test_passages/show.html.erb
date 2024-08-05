@@ -1,46 +1,78 @@
-<div data-controller="progress"
-     data-progress-current-question-number-value="<%= @test_passage.current_question_number %>"
-     data-progress-total-questions-value="<%= @test_passage.total_questions %>">
-  <h1><%= t('test_passages.show.header', title: @test_passage.test.title) %></h1>
+<!--<div data-controller="progress"-->
+<!--     data-progress-current-question-number-value="<%#= @test_passage.current_question_number %>"-->
+<!--     data-progress-total-questions-value="<%#= @test_passage.total_questions %>">-->
 
-  <p>
-    <%= t('test_passages.show.question_progress',
-          current_question_number: @test_passage.current_question_number,
-          total_questions: @test_passage.total_questions) %>
-  </p>
+  <div data-controller="timer"
+       data-timer-duration-value="<%= @test_passage.test.timer %>"
+       data-timer-redirect-url-value="<%= result_test_passage_path(@test_passage) %>">
+    <h1><%= t('test_passages.show.header', title: @test_passage.test.title) %></h1>
 
-  <div class="progress mb-4">
-    <div class="progress-bar" role="progressbar" style="width: 0; transition: none;" data-progress-target="bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
+<!--    <div class="progress mb-4">-->
+<!--      <div class="progress-bar" role="progressbar" style="width: 0; transition: none;" data-progress-target="bar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--    </div>-->
 
-  <div class="card shadow mb-4">
-    <div class="card-body">
-      <b>
-        <%= @test_passage.current_question.body %>
-      </b>
+    <% if @test_passage.test.timer %>
 
-      <%= form_with url: test_passage_path(@test_passage), local: true, method: :put, data: { turbo: false } do |form| %>
-        <div class="form-group">
-          <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
-            <div class="form-check">
-              <%= b.check_box id: "answer_ids_#{b.object.id}", class: "form-check-input" %>
-              <%= b.label class: "form-check-label" %>
+      <%= t('test_passages.show.time_left') %>:
+      <div data-timer-target="left"></div>
+    <% end %>
+
+
+
+    <%= turbo_frame_tag(dom_id(@test_passage)) do %>
+
+      <%= render 'shared/flash' %>
+
+      <div class="progress mb-4">
+        <% current_question_number = @test_passage.current_question_number %>
+        <% total_questions = @test_passage.total_questions %>
+        <% progress_percentage = (current_question_number.to_f / total_questions * 100).round %>
+
+        <div class="progress-bar" role="progressbar"
+             style="width: <%= progress_percentage %>%;"
+             aria-valuenow="<%= progress_percentage %>"
+             aria-valuemin="0"
+             aria-valuemax="100">
+          <%= progress_percentage %>% Complete
+        </div>
+      </div>
+      <p>
+        <%= t('test_passages.show.question_progress',
+              current_question_number: @test_passage.current_question_number,
+              total_questions: @test_passage.total_questions) %>
+      </p>
+
+
+
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <b>
+            <%= @test_passage.current_question.body %>
+          </b>
+          <%= form_with url: test_passage_path(@test_passage), local: true, method: :put, data: { "timer-target": "form", turbo_frame: dom_id(@test_passage) } do |form| %>
+            <div class="form-group">
+              <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
+                <div class="form-check">
+                  <%= b.check_box id: "answer_ids_#{b.object.id}", class: "form-check-input" %>
+                  <%= b.label class: "form-check-label" %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="form-group mt-3">
+              <%= form.submit t('helpers.submit.test_passage.update'), class: "btn btn-primary" %>
             </div>
           <% end %>
-        </div>
+    <% end %>
 
-        <div class="form-group mt-3">
-          <%= form.submit t('helpers.submit.test_passage.update'), class: "btn btn-primary" %>
-        </div>
-      <% end %>
+    <p class="mt-3">
+      <%= link_to 'Send Gist (Faraday)', gists_path(test_passage_id: @test_passage.id), data: { turbo_method: :post } %>
+    </p>
 
-      <p class="mt-3">
-        <%= link_to 'Send Gist (Faraday)', gists_path(test_passage_id: @test_passage.id), data: { turbo_method: :post } %>
-      </p>
-
-      <p class="mt-3">
-        <%= link_to 'Send Gist (Octokit)', gists_path(test_passage_id: @test_passage.id, client: 'octokit'), data: { turbo_method: :post } %>
-      </p>
+    <p class="mt-3">
+      <%= link_to 'Send Gist (Octokit)', gists_path(test_passage_id: @test_passage.id, client: 'octokit'), data: { turbo_method: :post } %>
+    </p>
+    </div>
     </div>
   </div>
-</div>
+<!--</div>-->

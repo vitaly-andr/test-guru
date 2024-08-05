@@ -6,34 +6,39 @@
     <div class="card-body">
       <%= render 'shared/errors', resource: @test %>
 
-      <div class="form-group">
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= form.label :title, class: "form-label" %>
+          <%= form.text_field :title, class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-        <%= form.label :level, class: "form-label" %>
-        <%= form.number_field :level, class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <%= form.label :level, class: "form-label" %>
+          <%= form.number_field :level, class: "form-control" %>
+        </div>
 
-      <div class="form-group">
-        <%= form.label :category_id, class: "form-label" %>
-        <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: t('helpers.prompt.category') }, { class: "form-control" } %>
-      </div>
+        <div class="form-group">
+          <%= form.label :category_id, class: "form-label" %>
+          <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: t('helpers.prompt.category') }, { class: "form-control" } %>
+        </div>
 
-      <div class="form-group">
-        <%= form.label :author_id, class: "form-label" %>
-        <%= form.collection_select :author_id, User.all, :id, :full_name, {}, { class: "form-control" } %>
-      </div>
+        <div class="form-group">
+          <%= form.label :author_id, class: "form-label" %>
+          <%= form.collection_select :author_id, User.all, :id, :full_name, {}, { class: "form-control" } %>
+        </div>
 
-      <div class="field">
-        <%= form.check_box :published %>
-        <%= form.label :published, class: "form-label" %>
-      </div>
+        <div class="form-group">
+          <%= form.label :timer, 'Timer (minutes)', class: "form-label" %>
+          <%= form.number_field :timer, in: 1..240, step: 1, class: 'form-control' %>
+        </div>
 
-      <div class="form-group mt-3">
-        <%= form.submit class: "btn btn-primary" %>
+        <div class="field">
+          <%= form.check_box :published %>
+          <%= form.label :published, class: "form-label" %>
+        </div>
+
+        <div class="form-group mt-3">
+          <%= form.submit class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
