@@ -10,7 +10,6 @@
 #  updated_at  :datetime         not null
 #  author_id   :integer          not null
 #  published   :boolean
-#  timer       :integer
 #
 require "test_helper"
 

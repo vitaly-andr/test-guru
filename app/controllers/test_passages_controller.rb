@@ -3,8 +3,6 @@ class TestPassagesController < ApplicationController
   before_action :set_test_passage, only: %i[show update result]
 
   def show
-    puts "show - #{@test_passage.current_question.inspect}"
-    finish_test_passage if time_over?
 
   end
 
@@ -21,7 +19,7 @@ class TestPassagesController < ApplicationController
 
     @test_passage.accept!(params[:answer_ids])
 
-    if @test_passage.completed? || time_over?
+    if @test_passage.completed?
       finish_test_passage
     else
       render :show
@@ -34,16 +32,6 @@ class TestPassagesController < ApplicationController
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
-  end
-
-  def time_over?
-    return false unless @test_passage.test.timer
-
-    # Преобразуем минуты в секунды
-    max_time = @test_passage.test.timer * 60
-    elapsed_time = Time.current - @test_passage.created_at
-
-    elapsed_time > max_time
   end
 
   def finish_test_passage

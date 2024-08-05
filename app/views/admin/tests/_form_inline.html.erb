@@ -28,11 +28,6 @@
           <%= form.collection_select :author_id, User.all, :id, :full_name, {}, { class: "form-control" } %>
         </div>
 
-        <div class="form-group">
-          <%= form.label :timer, 'Timer (minutes)', class: "form-label" %>
-          <%= form.number_field :timer, in: 1..240, step: 1, class: 'form-control' %>
-        </div>
-
         <div class="field">
           <%= form.check_box :published %>
           <%= form.label :published, class: "form-label" %>

@@ -15,6 +15,3 @@ application.register("progress", ProgressController)
 
 import SortController from "controllers/sort_controller"
 application.register("sort", SortController)
-
-import TimerController from "controllers/timer_controller"
-application.register("timer", TimerController)
