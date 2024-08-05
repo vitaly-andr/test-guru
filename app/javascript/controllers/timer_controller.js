@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-    static targets = ["left"];
-    static values = { duration: Number, redirectUrl: String }
+    static targets = ["left", "form"];
+    static values = {duration: Number, redirectUrl: String}
 
     connect() {
         console.log("Timer controller connected");
@@ -25,14 +25,18 @@ export default class extends Controller {
         const timeLeft = this.timer - elapsedTime
         console.log('Timer controller updating')
 
-        if (timeLeft <= 0) {
-            clearInterval(this.interval)
-            window.location.href = this.redirectUrlValue
-        } else {
-            const minutes = Math.floor(timeLeft / 1000 / 60)
-            const seconds = Math.floor((timeLeft / 1000) % 60)
-            // this.leftTarget.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-            this.leftTarget.textContent = `test`
+
+        if (timeLeft > 0) {
+            const minutes = Math.floor(timeLeft / 1000 / 60);
+            const seconds = Math.floor((timeLeft / 1000) % 60);
+            this.leftTarget.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            return;
         }
+
+        clearInterval(this.interval);
+        console.log('Form submitted due to timer');
+
+        this.formTarget.requestSubmit();
+        console.log('Form submitted due to timer2');
     }
 }

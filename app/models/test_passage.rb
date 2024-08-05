@@ -9,25 +9,39 @@
 #  correct_questions   :integer          default(0)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  passed              :boolean          default(FALSE)
 #
 class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test, optional: true
   belongs_to :current_question, class_name: 'Question', optional: true
-  before_save :set_question
+  before_create :set_question
 
   validate :test_has_questions, on: :create
+  scope :passed, -> { where(passed: true) }
 
 
   SUCCESS_CRITERIA = 85
+  SECONDS_IN_MINUTE = 60
   def completed?
     current_question.nil?
+  end
+
+  def time_over?
+    return false unless test.timer
+
+    # Convert minutes to seconds
+    max_time = test.timer * SECONDS_IN_MINUTE
+    elapsed_time = Time.current - created_at
+
+    elapsed_time > max_time
   end
 
   def accept!(answer_ids)
     if correct_answer?(answer_ids)
       self.correct_questions += 1
     end
+    self.current_question = next_question
 
     save!
   end

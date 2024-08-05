@@ -1,5 +1,5 @@
 class Admin::TestsController < Admin::AdminController
-  before_action :set_test, only: %i[show edit update destroy update_inline]
+  before_action :set_test, only: %i[show edit update destroy]
 
 
   def index
@@ -35,15 +35,14 @@ class Admin::TestsController < Admin::AdminController
     end
   end
 
-  def update_inline
-    if @test.update(test_params)
-      redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
-    else
-      flash[:error] = @test.errors.full_messages.join(", ")
-      @tests = Test.all
-      render :index, status: :unprocessable_entity
-    end
-  end
+  # def update_inline
+  #   if @test.update(test_params)
+  #     redirect_to admin_tests_path, notice: t('shared.flash.updated.test')
+  #   else
+  #     flash[:error] = @test.errors.full_messages.join(", ")
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
 
   def destroy
     @test.destroy
